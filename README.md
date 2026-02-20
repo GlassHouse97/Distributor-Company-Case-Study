@@ -43,13 +43,13 @@ All queries and supporting analysis will be developed using Google BigQuery, and
 
 ---
 
-## 🏗 Data Architecture
+## Data Architecture
 
 The dataset follows a dimensional modeling structure commonly used in warehouse environments, consisting of one centralized fact table supported by customer dimension tables.
 
 ---
 
-### 📌 Fact Table: `TotalSales`
+### Fact Table: `TotalSales`
 
 **Grain:** One row per invoice line item  
 
@@ -89,7 +89,7 @@ The combination of (`InvoiceID`, `ItemID`) represents a unique transaction line 
 
 ---
 
-### 📌 Dimension Table: `CustomerData`
+### Dimension Table: `CustomerData`
 
 **Grain:** One row per customer  
 
@@ -114,7 +114,7 @@ This table provides geographic, lifecycle, and classification context for each a
 
 ---
 
-### 📌 Dimension Table: `CustomerSegmentationData`
+### Dimension Table: `CustomerSegmentationData`
 
 **Grain:** One row per customer class  
 
@@ -150,7 +150,7 @@ This mirrors real-world accounting standards and ensures reporting consistency a
 
 ---
 
-## 🎯 Business Objectives
+## Business Objectives
 
 The analysis addresses the following executive questions:
 
