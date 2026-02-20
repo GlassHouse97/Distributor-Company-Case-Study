@@ -57,28 +57,30 @@ This table contains all transactional sales activity and serves as the primary a
 
 **Columns:**
 
-- `ItemID` (INTEGER)
-- `Brand` (STRING)
-- `PackSize` (STRING)
-- `CustomerNumber` (INTEGER)
-- `Cases` (INTEGER)
-- `Pieces` (INTEGER)
-- `Sales` (FLOAT)
-- `Cost` (FLOAT)
-- `InvoiceID` (STRING)
-- `SalesPerson` (STRING)
-- `Warehouse` (INTEGER)
-- `Price` (FLOAT)
-- `Weight` (FLOAT)
-- `InvoiceDate` (DATE)
-- `AccountingID` (STRING)
-- `Period` (INTEGER, YYMM format – revenue recognition period)
-- `BillingType` (INTEGER)
-- `CustomerClass` (INTEGER)
-- `OrderID` (STRING)
-- `PerMonth` (INTEGER)
-- `PerYear` (INTEGER)
-- `PerQuarter` (STRING)
+| Column Name     | Data Type |
+|----------------|-----------|
+| ItemID         | INTEGER   |
+| Brand          | STRING    |
+| PackSize       | STRING    |
+| CustomerNumber | INTEGER   |
+| Cases          | INTEGER   |
+| Pieces         | INTEGER   |
+| Sales          | FLOAT     |
+| Cost           | FLOAT     |
+| InvoiceID      | STRING    |
+| SalesPerson    | STRING    |
+| Warehouse      | INTEGER   |
+| Price          | FLOAT     |
+| Weight         | FLOAT     |
+| InvoiceDate    | DATE      |
+| AccountingID   | STRING    |
+| Period         | INTEGER (YYMM format – revenue recognition period) |
+| BillingType    | INTEGER   |
+| CustomerClass  | INTEGER   |
+| OrderID        | STRING    |
+| PerMonth       | INTEGER   |
+| PerYear        | INTEGER   |
+| PerQuarter     | STRING    |
 
 The combination of (`InvoiceID`, `ItemID`) represents a unique transaction line in this table.  
 
@@ -95,14 +97,16 @@ This table provides geographic, lifecycle, and classification context for each a
 
 **Columns:**
 
-- `CustomerNumber` (INTEGER)
-- `City` (STRING)
-- `State` (STRING)
-- `ZipCode` (STRING)
-- `SalesPerson` (STRING)
-- `DATE STARTED` (DATE)
-- `CustomerClass` (INTEGER)
-- `CustomerClassDescription` (STRING)
+| Column Name              | Data Type |
+|--------------------------|-----------|
+| CustomerNumber           | INTEGER   |
+| City                     | STRING    |
+| State                    | STRING    |
+| ZipCode                  | STRING    |
+| SalesPerson              | STRING    |
+| DATE STARTED             | DATE      |
+| CustomerClass            | INTEGER   |
+| CustomerClassDescription | STRING    |
 
 `CustomerNumber` is the primary key of this table.  
 
@@ -118,12 +122,14 @@ This table defines structured segmentation categories used for channel and profi
 
 **Columns:**
 
-- `CustomerClass` (INTEGER)
-- `CustomerClassDescription` (STRING)
-- `string_field_2` (STRING)
-- `string_field_3` (STRING)
-- `string_field_4` (STRING)
-- `string_field_5` (STRING)
+| Column Name              | Data Type |
+|--------------------------|-----------|
+| CustomerClass            | INTEGER   |
+| CustomerClassDescription | STRING    |
+| string_field_2           | STRING    |
+| string_field_3           | STRING    |
+| string_field_4           | STRING    |
+| string_field_5           | STRING    |
 
 `CustomerClass` is the primary key of this table.
 
