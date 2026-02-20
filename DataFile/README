@@ -1,0 +1,3 @@
+These are data files used for the project. 
+Notice: There is no "TotalSales" Table, but it is referenced all over the SQL Queries. 
+The data in Total Sales is too big to fit in a CSV, so get creative with how you build TotalSales Table ;)
