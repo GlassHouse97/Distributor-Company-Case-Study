@@ -1,6 +1,6 @@
 # Data Files
 
-These are the data files used for this case study project.
+These are the data files used for this case study project. [Download the data](https://www.kaggle.com/datasets/chrisdelgado3301/distributor-company-portfolio-dataset)
 
 ## Important Notice
 
