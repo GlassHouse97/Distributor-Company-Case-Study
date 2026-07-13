@@ -1,139 +1,137 @@
 # Revenue Quality & Customer Profitability Case Study
 
-## Project Overview
+This portfolio project examines whether multi-year revenue growth is profitable, durable, appropriately diversified, and supported by a healthy customer base.
 
-This case study explores revenue performance, customer profitability, and growth sustainability within a structured wholesale distribution environment. The project is built using a production-style transactional dataset modeled to reflect real-world enterprise sales operations.
+> **Current status:** The data foundation, all four canonical analyses, strategic synthesis, validation suite, charts, analyst workbook, and polished business report are complete. This repository is the privacy-safe portfolio release; full source-data reproduction still depends on an approved external dataset link and redistribution license.
 
-At its core, this analysis focuses on a centralized invoice-level sales fact table supported by customer master data and structured segmentation dimensions. The dataset captures revenue, cost, sales ownership, geographic attributes, and financial reporting periods — enabling a comprehensive evaluation of **revenue quality** rather than simple top-line growth.
+## Choose Your Path
 
-A key component of this environment is the company's revenue recognition standard. While transaction activity is recorded by invoice date, official financial reporting is governed by an accounting period field (`Period`, formatted as YYMM). All executive reporting, sales performance evaluation, and profitability analysis are aligned to recognized revenue periods rather than transaction timestamps. This distinction mirrors real-world accounting controls and ensures analytical accuracy.
+| Audience | Start Here | What You Will Find |
+| --- | --- | --- |
+| Hiring managers and business readers | [`SOLUTION/EXECUTIVE_SUMMARY.md`](SOLUTION/EXECUTIVE_SUMMARY.md) | A concise business narrative, final visuals, findings, and recommendations. |
+| Analysts and technical reviewers | [`docs/DATA_PIPELINE.md`](docs/DATA_PIPELINE.md) | Reproducible setup, modeling rules, validation checks, and query instructions. |
+| Case-study reviewers | [`CASE_STUDY_QUESTIONS.md`](CASE_STUDY_QUESTIONS.md) | The four executive questions and final strategic synthesis. |
+| Downloadable portfolio deliverables | [`deliverables/`](deliverables/) | A polished Word business report and filterable Excel analysis workbook. |
 
-Let's get started!
+## Results at a Glance
+
+- Recognized revenue grew **65.0%** from 2018 to 2024; gross profit grew **89.6%**, and gross margin expanded from **19.15% to 22.01%**.
+- Independent Retail Accounts generated **48.75% of revenue** and **51.37% of gross profit**, making it both the core economic engine and the main segment-level exposure.
+- The largest customer generated only **1.13% of revenue**; it takes **599 customers** to reach 80% of revenue, but only seven customer segments.
+- Non-active customers carry a **$23.0 million trailing revenue baseline**, equal to **17.60% of 2024 revenue**. This is a reactivation-opportunity measure, not a forecast.
+
+The complete evidence and recommendations are in [`SOLUTION/EXECUTIVE_SUMMARY.md`](SOLUTION/EXECUTIVE_SUMMARY.md).
 
 ## Business Context
 
-The company has posted steady top-line revenue growth over multiple years. The strategic concern is not *how much* revenue is growing, but **how durable and profitable that growth actually is.** Leadership wants clarity on four questions, plus a synthesis:
+The company has produced steady top-line revenue growth across multiple years. Leadership is not only concerned with how much revenue is growing, but whether that growth is profitable, durable, and appropriately diversified.
 
-1. Is revenue growth translating into sustainable **profit** growth, or is margin quietly eroding?
-2. Which customer **segments** generate the strongest margins — and are the high-revenue segments also the high-margin ones?
-3. Is the business overly dependent on a small **concentration** of accounts, and does that risk look different at the segment level versus the individual-customer level?
-4. Where does **customer retention risk** exist, and how much revenue is genuinely exposed to it?
+The case study addresses four questions:
 
-Taken together: **how should strategic focus shift to improve the quality of revenue?**
+1. Is recognized revenue growth translating into sustainable gross-profit growth?
+2. Which customer segments drive profitable growth rather than revenue alone?
+3. Is the business overly dependent on a small number of customers or segments?
+4. Which customers appear inactive or at risk, and how much revenue is associated with that risk?
 
-This project approaches these questions from a financial and operational perspective, combining dimensional modeling principles with period-based revenue logic to deliver executive-ready insight.
+The final synthesis asks how strategic focus should shift to improve the overall quality of revenue.
 
-## Analytical Direction
+## Data Foundation
 
-The analysis is organized around four questions, each pairing a SQL solution with a business interpretation:
+The seven annual transaction files contain:
 
-1. **Revenue & Margin Trend Analysis** — period-based revenue and gross margin trends over time.
-2. **Customer & Segment Profitability** — revenue and margin performance by customer segment, separating volume from profitability.
-3. **Revenue Concentration Risk (Pareto Analysis)** — how broadly revenue is distributed across customers, and how customer-level concentration compares to segment-level concentration.
-4. **Customer Lifecycle & Churn Analysis** — recognized-period activity used to classify churn risk and quantify the revenue actually exposed to it.
+- **3,714,624 transaction rows**
+- **3,230 transacting customers**
+- **$724.4 million in recognized sales**
+- **$153.9 million in gross profit**
+- **2018–2024 annual source files**, with accounting-period boundary activity preserved
 
-All queries and supporting analysis are developed in **Google BigQuery**, and visualizations are captured in **Google Looker Studio**.
+The project uses a local SQLite database rather than Excel for the canonical transaction table. Excel remains useful for small result tables and polished summaries, but its 1,048,576-row worksheet limit cannot accommodate the transaction grain.
 
-## Data Architecture
+## Modeling Rules
 
-The dataset follows a dimensional modeling structure commonly used in warehouse environments, consisting of one centralized fact table supported by customer dimension tables.
+- `Period` is the financial-reporting authority. It is stored as YYMM; for example, `2604` represents April 2026.
+- The transaction row's `CustomerClass` is the historical authority. Current customer classifications never overwrite financial history.
+- A local `data/raw/reference/CustomerData.csv` may supply optional current customer attributes, but it is excluded from the public repository and is never authoritative for historical analysis.
+- `PackSize` is always loaded as text, including date-like values such as `1-Jan`.
+- Returns, zero-sales cost activity, zero-cost activity, and exact-duplicate candidates are retained and flagged rather than silently removed.
+- Only the seven annual transaction files are ingested. Quarterly files are derived duplicates and are excluded.
 
-### Fact Table: `TotalSales`
+## Reproducible Pipeline
 
-**Grain:** One row per invoice line item
+```mermaid
+flowchart LR
+    A["Annual transaction CSVs"] --> B["UTF-8 validation"]
+    B --> C["Reference cleanup"]
+    C --> D["SQLite total_sales"]
+    D --> E["Validation checks"]
+    E --> F["SQL analyses"]
+    F --> G["Executive report and visuals"]
+```
 
-This table contains all transactional sales activity and serves as the primary analytical source.
+From the project root:
 
-**Columns:**
+```bash
+python -m venv .venv
+python -m pip install -r requirements.txt
+python scripts/convert_csv_to_utf8.py
+python scripts/prepare_reference_data.py
+python scripts/build_canonical_database.py
+python scripts/validate_canonical_database.py
+```
 
-| Column Name | Data Type |
-| --- | --- |
-| ItemID | INTEGER |
-| Brand | STRING |
-| PackSize | STRING |
-| CustomerNumber | INTEGER |
-| Cases | INTEGER |
-| Pieces | INTEGER |
-| Sales | FLOAT |
-| Cost | FLOAT |
-| InvoiceID | STRING |
-| SalesPerson | STRING |
-| Warehouse | INTEGER |
-| Price | FLOAT |
-| Weight | FLOAT |
-| InvoiceDate | DATE |
-| AccountingID | STRING |
-| Period | INTEGER (YYMM format – revenue recognition period) |
-| BillingType | INTEGER |
-| CustomerClass | INTEGER |
-| OrderID | STRING |
-| PerMonth | INTEGER |
-| PerYear | INTEGER |
-| PerQuarter | STRING |
+The generated database is `data/processed/distributor_case_study.sqlite`. It is reproducible and intentionally excluded from Git.
 
-The combination of `(InvoiceID, ItemID)` represents a unique transaction line in this table.
+## Data Access and Privacy
 
-- `CustomerNumber` is a foreign key referencing `CustomerData(CustomerNumber)`.
-- `CustomerClass` is a foreign key referencing `CustomerSegmentationData(CustomerClass)`.
+The public repository contains code, SQL, documentation, validation metadata, approved non-identifying reference files, visuals, and finished business deliverables. Customer-level result tables and the analyst workbook use stable anonymized labels such as `CUSTOMER_0001`; the supplemental customer reference is excluded.
 
-### Dimension Table: `CustomerData`
+The seven large annual transaction files will be published only after de-identification and redistribution approval, through an external dataset host with a stable download link and checksum manifest. Raw identifying customer files and internal scrub workbooks will never be published. See [`data/README.md`](data/README.md) and [`docs/PUBLICATION_CHECKLIST.md`](docs/PUBLICATION_CHECKLIST.md).
 
-**Grain:** One row per customer
+## Repository Structure
 
-This table provides geographic, lifecycle, and classification context for each account.
+```text
+.
+├── README.md                         # Portfolio landing page
+├── CASE_STUDY_QUESTIONS.md           # Canonical scope
+├── data/
+│   ├── raw/
+│   │   ├── reference/                # Public reference files and source schema
+│   │   └── transactions/             # Seven annual CSVs; hosted externally
+│   ├── processed/                    # Reproducible local SQLite database
+│   └── metadata/                     # Checksums and validation evidence
+├── docs/                              # Technical documentation
+├── deliverables/                      # Business report and analyst workbook
+├── scripts/                           # Portable ingestion and validation tools
+└── SOLUTION/                          # Executive and question-level analysis
+    ├── EXECUTIVE_SUMMARY.md
+    ├── 01_revenue_margin_trends.md
+    ├── 02_segment_profitability.md
+    ├── 03_revenue_concentration.md
+    ├── 04_customer_retention.md
+    ├── 05_strategic_synthesis.md
+    ├── outputs/
+    ├── sql/
+    └── visualizations/
+```
 
-**Columns:**
+## Tooling
 
-| Column Name | Data Type |
-| --- | --- |
-| CustomerNumber | INTEGER |
-| City | STRING |
-| State | STRING |
-| ZipCode | STRING |
-| SalesPerson | STRING |
-| DATE STARTED | DATE |
-| CustomerClass | INTEGER |
-| CustomerClassDescription | STRING |
+- Python and pandas for ingestion and validation
+- SQLite and SQL for the canonical analytical layer
+- Excel-compatible exports for small review tables
+- Portfolio-ready charts and a concise executive document for final presentation
 
-`CustomerNumber` is the primary key of this table.
+## Regenerate the Analysis and Deliverables
 
-`CustomerClass` is a foreign key referencing `CustomerSegmentationData(CustomerClass)`.
+After building and validating the canonical database:
 
-### Dimension Table: `CustomerSegmentationData`
+```bash
+python scripts/analyze_q1.py
+python scripts/analyze_q2_q4.py
+python scripts/build_business_report.py
+node scripts/build_analysis_workbook.mjs
+```
 
-**Grain:** One row per customer class
+The first two commands recreate the SQL outputs and charts; Question 2-4 processing also replaces source customer numbers with stable public labels. The last two commands rebuild the portfolio-facing Word report and Excel workbook. The workbook builder uses the Codex bundled artifact runtime in this working environment; the finished workbook itself is standard `.xlsx` and does not require Codex to open.
 
-This table defines structured segmentation categories used for channel and profitability analysis.
-
-**Columns:**
-
-| Column Name | Data Type |
-| --- | --- |
-| CustomerClass | INTEGER |
-| CustomerClassDescription | STRING |
-| string_field_2 | STRING |
-| string_field_3 | STRING |
-| string_field_4 | STRING |
-| string_field_5 | STRING |
-
-`CustomerClass` is the primary key of this table.
-
-## Revenue Recognition Logic
-
-While `InvoiceDate` captures transaction timing, the company recognizes revenue using the `Period` field.
-
-- `Period` follows a YYMM format
-- Example:
-  - `2201` = January 2022
-  - `2112` = December 2021
-
-All financial reporting and performance evaluation are based on `Period`, not invoice date. This mirrors real-world accounting standards and ensures reporting consistency across the organization.
-
-## Business Objectives
-
-The analysis addresses the following executive questions, in order:
-
-1. How has recognized revenue and gross margin trended over time, and is revenue growth translating into profit growth?
-2. Which customer segments drive profitable growth — not just revenue?
-3. Is the business overly dependent on a small group of customers, and how does concentration differ at the segment versus customer level?
-4. Which customers appear inactive, and how much revenue is actually exposed to churn?
+Before a public release, complete [`docs/PUBLICATION_CHECKLIST.md`](docs/PUBLICATION_CHECKLIST.md).

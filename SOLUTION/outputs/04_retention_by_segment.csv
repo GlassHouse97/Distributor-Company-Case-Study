@@ -1,0 +1,65 @@
+customer_class,customer_class_description,total_customers,active_customers,watch_customers,at_risk_customers,dormant_customers,no_positive_sales_customers,risky_customers,risky_customer_pct,revenue_at_risk,revenue_at_risk_share_pct
+2,Independent Retail Accounts,1634,867,40,81,646,0,767,46.94,9843836.39,42.71
+4,Commercial Service Accounts,464,174,24,31,235,0,290,62.5,3475443.63,15.08
+5,Wholesale Trade Accounts,357,195,11,23,128,0,162,45.38,2650396.12,11.5
+17,Mid-Size Retail Chain,30,0,0,0,30,0,30,100.0,1481781.63,6.43
+7,Regional Retail Chain – Tier 1,16,0,0,0,16,0,16,100.0,992975.91,4.31
+3,National Retail Chains,107,44,9,10,44,0,63,58.88,908120.45,3.94
+6,Commercial Supply Partners,15,7,1,1,6,0,8,53.33,731968.21,3.18
+9,Regional Retail Chain – Tier 3,15,11,0,0,4,0,4,26.67,375003.37,1.63
+8,Regional Retail Chain – Tier 2,18,13,0,2,3,0,5,27.78,342393.25,1.49
+39,International Specialty Retailer,2,0,0,0,2,0,2,100.0,319372.09,1.39
+47,Direct-to-Consumer Channel,32,0,0,0,32,0,32,100.0,307560.26,1.33
+25,Premium Specialty Retailer,3,2,0,0,1,0,1,33.33,278544.09,1.21
+54,Retail Cooperative Network,100,74,4,9,13,0,26,26.0,259864.43,1.13
+34,Urban Boutique Retailer,5,0,0,0,5,0,5,100.0,258801.78,1.12
+21,Discount Retail Chain,34,13,1,0,20,0,21,61.76,147865.05,0.64
+23,Value-Oriented Retail Chain,27,20,0,2,5,0,7,25.93,121117.82,0.53
+99,Inactive / Closed Accounts,10,1,0,0,9,0,9,90.0,92628.22,0.4
+28,Corporate Retail Group,29,0,0,0,29,0,29,100.0,83112.69,0.36
+11,Manufacturing Partners,18,7,2,2,7,0,11,61.11,66239.08,0.29
+14,Specialty Retail – Small Format,25,9,4,1,11,0,16,64.0,57144.25,0.25
+59,Import Marketplace Partner,2,1,0,0,1,0,1,50.0,36463.48,0.16
+42,Independent Distribution Partner,10,9,0,0,1,0,1,10.0,34379.29,0.15
+20,Cooperative Member Account,9,7,0,0,2,0,2,22.22,30764.05,0.13
+33,Regional Specialty Market,13,12,0,0,1,0,1,7.69,29970.18,0.13
+12,High-Volume Distribution Partner,2,1,0,0,1,0,1,50.0,25341.88,0.11
+58,Specialty Distribution Partner,1,0,1,0,0,0,1,100.0,24462.91,0.11
+41,Village Retail Operator,15,12,1,0,2,0,3,20.0,19984.48,0.09
+24,Metropolitan Retail Group,6,3,0,2,1,0,3,50.0,18374.91,0.08
+40,Suburban Independent Retailer,5,4,0,0,1,0,1,20.0,13759.52,0.06
+1,Unassigned,15,8,0,0,7,0,7,46.67,11133.4,0.05
+62,Convenience Retail Group,5,4,0,0,1,0,1,20.0,2734.81,0.01
+35,Regional Multi-Unit Operator,17,15,0,0,2,0,2,11.76,2714.74,0.01
+31,Premium Specialty Operator,6,3,0,1,2,0,3,50.0,2481.98,0.01
+10,Unassigned – Legacy,1,1,0,0,0,0,0,0.0,0.0,0.0
+18,Multi-Location Retail Group – Premium Tier,33,33,0,0,0,0,0,0.0,0.0,0.0
+19,Neighborhood Retail Group,11,11,0,0,0,0,0,0.0,0.0,0.0
+22,Institutional Buyer,4,4,0,0,0,0,0,0.0,0.0,0.0
+26,Suburban Retail Chain,9,9,0,0,0,0,0,0.0,0.0,0.0
+27,Urban Independent Retailer,6,6,0,0,0,0,0,0.0,0.0,0.0
+29,Niche Specialty Retailer,4,4,0,0,0,0,0,0.0,0.0,0.0
+30,International Retail Chain,2,2,0,0,0,0,0,0.0,0.0,0.0
+32,High-End Urban Retailer,1,1,0,0,0,0,0,0.0,0.0,0.0
+36,Import Distribution Partner,1,1,0,0,0,0,0,0.0,0.0,0.0
+38,Cooperative Retail Affiliate,4,4,0,0,0,0,0,0.0,0.0,0.0
+43,Event & Promotional Accounts,8,8,0,0,0,0,0,0.0,0.0,0.0
+45,Boutique Retail Operator,2,2,0,0,0,0,0,0.0,0.0,0.0
+46,Regional Retail Affiliate,1,1,0,0,0,0,0,0.0,0.0,0.0
+48,Specialty Beverage Retailer,12,12,0,0,0,0,0,0.0,0.0,0.0
+50,Farm & Specialty Market,1,1,0,0,0,0,0,0.0,0.0,0.0
+51,Franchise Retail Member,3,3,0,0,0,0,0,0.0,0.0,0.0
+52,Specialty Goods Retailer,1,1,0,0,0,0,0,0.0,0.0,0.0
+53,Wine & Spirits Retailer,4,4,0,0,0,0,0,0.0,0.0,0.0
+55,Large Regional Retail Chain,12,12,0,0,0,0,0,0.0,0.0,0.0
+56,National Retail Affiliate,8,8,0,0,0,0,0,0.0,0.0,0.0
+57,National Retail Affiliate – Secondary,4,4,0,0,0,0,0,0.0,0.0,0.0
+61,Commercial Supply Vendor,1,1,0,0,0,0,0,0.0,0.0,0.0
+63,Destination Retail Location,8,8,0,0,0,0,0,0.0,0.0,0.0
+64,Family-Owned Retail Business,5,5,0,0,0,0,0,0.0,0.0,0.0
+65,Regional Specialty Retailer,5,5,0,0,0,0,0,0.0,0.0,0.0
+66,Independent Neighborhood Retailer,4,4,0,0,0,0,0,0.0,0.0,0.0
+67,Midwest Specialty Operator,1,1,0,0,0,0,0,0.0,0.0,0.0
+68,Regional Multi-Unit Retail Chain,5,5,0,0,0,0,0,0.0,0.0,0.0
+70,Miscellaneous Trade Accounts,1,1,0,0,0,0,0,0.0,0.0,0.0
+Unmapped,Unmapped,21,0,0,0,0,21,0,0.0,0.0,0.0

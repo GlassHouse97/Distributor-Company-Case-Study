@@ -1,0 +1,7 @@
+check_name,actual_value,expected_value,status
+complete_month_count,84,84,PASS
+complete_year_count,7,7,PASS
+gross_profit_formula_difference,0.000000,0.000000,PASS
+partial_2017_rows_excluded,4,4,PASS
+transaction_row_count,3714620,3714620,PASS
+years_with_12_months,7,7,PASS

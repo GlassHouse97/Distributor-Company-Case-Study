@@ -1,0 +1,6 @@
+check_name,actual_value,expected_value,status
+active_segment_count,64,64,PASS
+complete_reporting_months,84,84,PASS
+segment_gross_profit_reconciliation,0.00,0.00,PASS
+segment_revenue_reconciliation,0.00,0.00,PASS
+unmapped_transaction_class_rows,0,0,PASS

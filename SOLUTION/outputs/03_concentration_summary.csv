@@ -1,0 +1,2 @@
+total_customers,positive_revenue_customers,zero_revenue_customers,negative_revenue_customers,top_1_customer_share_pct,top_10_customer_share_pct,top_100_customer_share_pct,customers_to_50_pct,customer_pct_to_50_revenue,customers_to_80_pct,customer_pct_to_80_revenue,customers_to_90_pct,customer_pct_to_90_revenue,customer_hhi,active_segments,top_1_segment_share_pct,top_3_segment_share_pct,top_5_segment_share_pct,segments_to_80_pct,segment_hhi
+3230,3192,17,21,1.1305,7.0866,33.4092,205,6.35,599,18.54,927,28.7,19.36,64,48.75,68.82,75.91,7,2662.59

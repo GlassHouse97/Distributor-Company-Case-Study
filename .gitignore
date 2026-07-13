@@ -1,0 +1,26 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local configuration
+.env
+
+# Large transaction data is downloaded from the external dataset host.
+/data/raw/transactions/*.csv
+
+# Reproducible local databases and exports
+/data/processed/*.sqlite
+/data/processed/*.sqlite-*
+/data/processed/*.db
+/data/processed/*.parquet
+
+# Office lock files and operating-system noise
+~$*
+.DS_Store
+Thumbs.db
+
+# Local QA artifacts created by the spreadsheet renderer
+*.inspect.ndjson

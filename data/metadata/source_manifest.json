@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "dataset_host_url": null,
+  "dataset_license": "To be selected before publication",
+  "expected_download_directory": "data/raw/transactions",
+  "annual_transaction_files": [
+    {
+      "file_name": "itmsls2018.csv",
+      "bytes": 52219189,
+      "data_rows": 406856,
+      "sha256": "97397e912294a356e61046fe92f5de983c6464ee1a0699d365fdb407818a6714",
+      "encoding": "UTF-8"
+    },
+    {
+      "file_name": "itmsls2019.csv",
+      "bytes": 56055514,
+      "data_rows": 436872,
+      "sha256": "1b9b6a0ee7998b7617604510102cbb8d53cfcebce911bd56a12b2f23d716aa51",
+      "encoding": "UTF-8"
+    },
+    {
+      "file_name": "itmsls2020.csv",
+      "bytes": 63532043,
+      "data_rows": 494162,
+      "sha256": "ded19cc4448e8f43d222c7b4f9cb7b422229f105ba6bfdf70b576167791e29ec",
+      "encoding": "UTF-8"
+    },
+    {
+      "file_name": "itmsls2021.csv",
+      "bytes": 69678078,
+      "data_rows": 541492,
+      "sha256": "a15b830a363baa5d548c28dc0109f4107d9a6132e5959bf82d8e956059e06958",
+      "encoding": "UTF-8"
+    },
+    {
+      "file_name": "itmsls2022.csv",
+      "bytes": 74305744,
+      "data_rows": 574256,
+      "sha256": "9241f9ce97138a1a1f0d5cf4f0805482f0d4c5dbee79d7cf9475db4100b23817",
+      "encoding": "UTF-8"
+    },
+    {
+      "file_name": "itmsls2023.csv",
+      "bytes": 79241855,
+      "data_rows": 612189,
+      "sha256": "d14955279869dcb397e53cabe5c4a1c5b3d8630608f0fb8d3607e9f9012f4273",
+      "encoding": "UTF-8"
+    },
+    {
+      "file_name": "itmsls2024.csv",
+      "bytes": 82774441,
+      "data_rows": 648797,
+      "sha256": "c9ac7e195c9006c878e72a85bfb5cc151f128f3d18a5c5a8e2d0d0c94cb5f19e",
+      "encoding": "UTF-8"
+    }
+  ],
+  "public_reference_files": [
+    {
+      "file_name": "CustomerSegmentationData.csv",
+      "bytes": 2060,
+      "sha256": "c28399b31f36cc5ab21443e79e771ebed47a97a6130285101941e09dfd10fa68",
+      "encoding": "UTF-8"
+    }
+  ],
+  "total_transaction_rows": 3714624
+}

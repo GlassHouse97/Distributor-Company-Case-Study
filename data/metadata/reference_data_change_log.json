@@ -1,0 +1,20 @@
+{
+  "modeling_rule": "Historical transaction CustomerClass is authoritative; CustomerData is supplemental.",
+  "segmentation": {
+    "path": "CustomerSegmentationData.csv",
+    "sha256_before": "c28399b31f36cc5ab21443e79e771ebed47a97a6130285101941e09dfd10fa68",
+    "sha256_after": "c28399b31f36cc5ab21443e79e771ebed47a97a6130285101941e09dfd10fa68",
+    "source_rows": 67,
+    "valid_mappings_before": 67,
+    "mappings_after": 67,
+    "added_mapping": {
+      "CustomerClass": "37",
+      "CustomerClassDescription": "Legacy Customer"
+    }
+  },
+  "customer": {
+    "path": "CustomerData.csv",
+    "included": false,
+    "status": "Not included in the public repository; supplemental only."
+  }
+}

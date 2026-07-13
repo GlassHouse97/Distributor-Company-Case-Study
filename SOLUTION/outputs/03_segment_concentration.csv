@@ -1,0 +1,65 @@
+customer_class,customer_class_description,customer_count,total_revenue,revenue_share_pct,cumulative_revenue_pct,revenue_rank
+2,Independent Retail Accounts,1663,353140177.88,48.7478,48.7478,1
+5,Wholesale Trade Accounts,365,102318681.7,14.1242,62.8719,2
+4,Commercial Service Accounts,465,43124288.42,5.9529,68.8248,3
+8,Regional Retail Chain – Tier 2,18,29970666.86,4.1372,72.962,4
+3,National Retail Chains,115,21360862.49,2.9487,75.9107,5
+54,Retail Cooperative Network,106,15915531.46,2.197,78.1077,6
+26,Suburban Retail Chain,9,15749424.85,2.1741,80.2817,7
+9,Regional Retail Chain – Tier 3,15,14535478.67,2.0065,82.2882,8
+18,Multi-Location Retail Group – Premium Tier,33,9146888.63,1.2626,83.5509,9
+6,Commercial Supply Partners,15,7371384.56,1.0176,84.5684,10
+36,Import Distribution Partner,1,7275125.35,1.0043,85.5727,11
+68,Regional Multi-Unit Retail Chain,5,7240597.7,0.9995,86.5722,12
+25,Premium Specialty Retailer,4,7146454.35,0.9865,87.5587,13
+29,Niche Specialty Retailer,4,6578110.77,0.908,88.4667,14
+31,Premium Specialty Operator,6,5962857.74,0.8231,89.2899,15
+64,Family-Owned Retail Business,5,5661920.63,0.7816,90.0714,16
+21,Discount Retail Chain,34,5343073.9,0.7376,90.809,17
+42,Independent Distribution Partner,10,5087891.8,0.7023,91.5113,18
+38,Cooperative Retail Affiliate,4,4937000.78,0.6815,92.1928,19
+32,High-End Urban Retailer,2,4697085.43,0.6484,92.8412,20
+33,Regional Specialty Market,13,4484414.44,0.619,93.4603,21
+19,Neighborhood Retail Group,11,3695985.63,0.5102,93.9705,22
+30,International Retail Chain,2,3403626.6,0.4698,94.4403,23
+17,Mid-Size Retail Chain,30,3345911.89,0.4619,94.9022,24
+65,Regional Specialty Retailer,5,3237656.49,0.4469,95.3491,25
+27,Urban Independent Retailer,6,3104253.35,0.4285,95.7776,26
+7,Regional Retail Chain – Tier 1,17,2869139.73,0.3961,96.1737,27
+23,Value-Oriented Retail Chain,27,2363099.44,0.3262,96.4999,28
+40,Suburban Independent Retailer,5,2149081.55,0.2967,96.7965,29
+46,Regional Retail Affiliate,1,2061966.55,0.2846,97.0812,30
+39,International Specialty Retailer,2,1857690.54,0.2564,97.3376,31
+52,Specialty Goods Retailer,1,1574927.65,0.2174,97.555,32
+35,Regional Multi-Unit Operator,17,1277993.16,0.1764,97.7314,33
+41,Village Retail Operator,15,1249581.84,0.1725,97.9039,34
+50,Farm & Specialty Market,1,1154527.22,0.1594,98.0633,35
+24,Metropolitan Retail Group,6,1113771.97,0.1537,98.217,36
+20,Cooperative Member Account,9,1033030.15,0.1426,98.3596,37
+14,Specialty Retail – Small Format,25,1012865.76,0.1398,98.4995,38
+43,Event & Promotional Accounts,8,971103.35,0.1341,98.6335,39
+55,Large Regional Retail Chain,12,919618.29,0.1269,98.7605,40
+48,Specialty Beverage Retailer,12,809854.32,0.1118,98.8723,41
+61,Commercial Supply Vendor,1,792457.42,0.1094,98.9816,42
+63,Destination Retail Location,8,775403.37,0.107,99.0887,43
+59,Import Marketplace Partner,2,706163.08,0.0975,99.1862,44
+11,Manufacturing Partners,18,696976.82,0.0962,99.2824,45
+53,Wine & Spirits Retailer,4,541469.86,0.0747,99.3571,46
+56,National Retail Affiliate,8,533909.42,0.0737,99.4308,47
+45,Boutique Retail Operator,2,502991.19,0.0694,99.5002,48
+22,Institutional Buyer,4,473483.57,0.0654,99.5656,49
+37,Legacy Customer,1,463251.08,0.0639,99.6296,50
+34,Urban Boutique Retailer,5,338972.77,0.0468,99.6763,51
+51,Franchise Retail Member,3,313946.26,0.0433,99.7197,52
+99,Inactive / Closed Accounts,10,312852.08,0.0432,99.7629,53
+47,Direct-to-Consumer Channel,32,307560.26,0.0425,99.8053,54
+28,Corporate Retail Group,29,281526.08,0.0389,99.8442,55
+62,Convenience Retail Group,5,275677.68,0.0381,99.8822,56
+57,National Retail Affiliate – Secondary,4,250449.99,0.0346,99.9168,57
+12,High-Volume Distribution Partner,2,191448.08,0.0264,99.9432,58
+70,Miscellaneous Trade Accounts,1,154905.67,0.0214,99.9646,59
+58,Specialty Distribution Partner,1,142503.71,0.0197,99.9843,60
+1,Unassigned,16,59751.37,0.0082,99.9925,61
+67,Midwest Specialty Operator,1,30097.27,0.0042,99.9967,62
+66,Independent Neighborhood Retailer,4,23245.28,0.0032,99.9999,63
+10,Unassigned – Legacy,1,640.54,0.0001,100.0,64

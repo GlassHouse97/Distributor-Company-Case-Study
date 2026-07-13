@@ -1,0 +1,7 @@
+check_name,actual_value,expected_value,status
+active_revenue_at_risk,0.00,0.00,PASS
+bucket_customer_reconciliation,3230,3230,PASS
+latest_recognized_period,2412,2412,PASS
+lifecycle_customer_count,3230,3230,PASS
+no_positive_sales_customer_count,21,21,PASS
+nonnegative_revenue_at_risk,0,0,PASS

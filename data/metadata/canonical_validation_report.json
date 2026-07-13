@@ -1,0 +1,239 @@
+{
+  "database": "data/processed/distributor_case_study.sqlite",
+  "passed": true,
+  "check_count": 33,
+  "failed_check_count": 0,
+  "checks": [
+    {
+      "check": "sqlite_integrity",
+      "passed": true,
+      "actual": "ok",
+      "expected": "ok",
+      "tolerance": 0.0
+    },
+    {
+      "check": "total_sales_rows",
+      "passed": true,
+      "actual": 3714624,
+      "expected": 3714624,
+      "tolerance": 0.0
+    },
+    {
+      "check": "sales_total",
+      "passed": true,
+      "actual": 724422941.42901,
+      "expected": 724422941.42901,
+      "tolerance": 0.01
+    },
+    {
+      "check": "cost_total",
+      "passed": true,
+      "actual": 570505668.775113,
+      "expected": 570505668.775113,
+      "tolerance": 0.01
+    },
+    {
+      "check": "gross_profit_total",
+      "passed": true,
+      "actual": 153917272.653897,
+      "expected": 153917272.653897,
+      "tolerance": 0.01
+    },
+    {
+      "check": "rows_itmsls2018.csv",
+      "passed": true,
+      "actual": 406856,
+      "expected": 406856,
+      "tolerance": 0.0
+    },
+    {
+      "check": "rows_itmsls2019.csv",
+      "passed": true,
+      "actual": 436872,
+      "expected": 436872,
+      "tolerance": 0.0
+    },
+    {
+      "check": "rows_itmsls2020.csv",
+      "passed": true,
+      "actual": 494162,
+      "expected": 494162,
+      "tolerance": 0.0
+    },
+    {
+      "check": "rows_itmsls2021.csv",
+      "passed": true,
+      "actual": 541492,
+      "expected": 541492,
+      "tolerance": 0.0
+    },
+    {
+      "check": "rows_itmsls2022.csv",
+      "passed": true,
+      "actual": 574256,
+      "expected": 574256,
+      "tolerance": 0.0
+    },
+    {
+      "check": "rows_itmsls2023.csv",
+      "passed": true,
+      "actual": 612189,
+      "expected": 612189,
+      "tolerance": 0.0
+    },
+    {
+      "check": "rows_itmsls2024.csv",
+      "passed": true,
+      "actual": 648797,
+      "expected": 648797,
+      "tolerance": 0.0
+    },
+    {
+      "check": "quarterly_files_excluded",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "tolerance": 0.0
+    },
+    {
+      "check": "customer_class_reference_rows",
+      "passed": true,
+      "actual": 67,
+      "expected": 67,
+      "tolerance": 0.0
+    },
+    {
+      "check": "legacy_class_mapping",
+      "passed": true,
+      "actual": "Legacy Customer",
+      "expected": "Legacy Customer",
+      "tolerance": 0.0
+    },
+    {
+      "check": "supplemental_unmapped_reference",
+      "passed": true,
+      "actual": "Unmapped",
+      "expected": "Unmapped",
+      "tolerance": 0.0
+    },
+    {
+      "check": "unmapped_customer_rows",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "tolerance": 0.0
+    },
+    {
+      "check": "unmapped_customer_class_rows",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "tolerance": 0.0
+    },
+    {
+      "check": "transaction_class_37_description",
+      "passed": true,
+      "actual": 2232,
+      "expected": 2232,
+      "tolerance": 0.0
+    },
+    {
+      "check": "historical_class_movement_preserved",
+      "passed": true,
+      "actual": 90233,
+      "expected": 90233,
+      "tolerance": 0.0
+    },
+    {
+      "check": "pack_size_storage_type",
+      "passed": true,
+      "actual": "text",
+      "expected": "text",
+      "tolerance": 0.0
+    },
+    {
+      "check": "pack_size_date_like_values_preserved",
+      "passed": true,
+      "actual": true,
+      "expected": true,
+      "tolerance": 0.0
+    },
+    {
+      "check": "period_is_four_digit_text",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "tolerance": 0.0
+    },
+    {
+      "check": "period_components_reconcile",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "tolerance": 0.0
+    },
+    {
+      "check": "period_date_reconciles",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "tolerance": 0.0
+    },
+    {
+      "check": "return_rows",
+      "passed": true,
+      "actual": 22766,
+      "expected": 22766,
+      "tolerance": 0.0
+    },
+    {
+      "check": "zero_sales_nonzero_cost_rows",
+      "passed": true,
+      "actual": 34780,
+      "expected": 34780,
+      "tolerance": 0.0
+    },
+    {
+      "check": "nonzero_sales_zero_cost_rows",
+      "passed": true,
+      "actual": 6179,
+      "expected": 6179,
+      "tolerance": 0.0
+    },
+    {
+      "check": "zero_sales_and_cost_rows",
+      "passed": true,
+      "actual": 1259,
+      "expected": 1259,
+      "tolerance": 0.0
+    },
+    {
+      "check": "invoice_period_mismatch_rows",
+      "passed": true,
+      "actual": 274193,
+      "expected": 274193,
+      "tolerance": 0.0
+    },
+    {
+      "check": "rows_in_duplicate_groups",
+      "passed": true,
+      "actual": 273,
+      "expected": 273,
+      "tolerance": 0.0
+    },
+    {
+      "check": "duplicate_groups",
+      "passed": true,
+      "actual": 127,
+      "expected": 127,
+      "tolerance": 0.0
+    },
+    {
+      "check": "duplicate_rows_beyond_first",
+      "passed": true,
+      "actual": 146,
+      "expected": 146,
+      "tolerance": 0.0
+    }
+  ]
+}
