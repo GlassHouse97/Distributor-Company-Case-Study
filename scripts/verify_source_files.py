@@ -1,4 +1,4 @@
-"""Verify downloaded annual transaction files against the published manifest."""
+"""Verify the included annual transaction files against the published manifest."""
 
 from __future__ import annotations
 

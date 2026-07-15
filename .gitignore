@@ -8,9 +8,6 @@ __pycache__/
 # Local configuration
 .env
 
-# Large transaction data is downloaded from the external dataset host.
-/data/raw/transactions/*.csv
-
 # Reproducible local databases and exports
 /data/processed/*.sqlite
 /data/processed/*.sqlite-*

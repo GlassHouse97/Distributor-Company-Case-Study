@@ -46,7 +46,7 @@ Based on the available financial history, the growth pattern appears **profitabl
 
 - `Period` is the financial-reporting authority and is interpreted as YYMM.
 - The trend window is `1801` through `2412`, providing seven complete reporting years and 84 consecutive months.
-- Four adjustment rows recognized in `1712` remain in the canonical database but are excluded from the complete-year trend because 2017 contains no other months.
+- Four adjustment rows recognized in `1712` remain in the final database but are excluded from the complete-year trend because 2017 contains no other months.
 - Revenue is `SUM(Sales)`, cost is `SUM(Cost)`, gross profit is `SUM(Sales - Cost)`, and gross margin is aggregate gross profit divided by aggregate revenue.
 - Returns, credits, zero-sales activity, zero-cost activity, and exact-duplicate candidates are retained. No transaction rows inside the reporting window were silently removed.
 - Year-over-year comparisons use recognized accounting periods, not invoice dates or order-entry dates.
@@ -66,7 +66,7 @@ The derived summary metrics and chart can be regenerated with:
 python scripts/analyze_q1.py
 ```
 
-Run this command from the project root after building the canonical SQLite database.
+Run this command from the project root after building the final SQLite database.
 
 ## Validation Notes
 

@@ -1,6 +1,6 @@
 -- Question 1 validation checks.
 -- These checks reconcile the 2018-2024 complete-year reporting window back to
--- the canonical transaction table without removing returns or adjustments.
+-- the final transaction table without removing returns or adjustments.
 
 WITH scoped_transactions AS (
     SELECT *

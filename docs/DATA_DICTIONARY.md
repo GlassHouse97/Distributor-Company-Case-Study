@@ -1,4 +1,4 @@
-# Canonical Data Dictionary
+# Final Data Dictionary
 
 ## `total_sales`
 

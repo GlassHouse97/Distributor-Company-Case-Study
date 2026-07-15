@@ -681,7 +681,7 @@ def build_report():
     add_heading(doc, "Reproduce the work", 2)
     add_body(
         doc,
-        "The repository contains the canonical question sheet, portable ingestion scripts, SQL for every analysis, validation checks, compact CSV outputs, and documentation for rebuilding the local SQLite database. The large annual transaction files are designed to be distributed through an external dataset host and verified with the included checksum manifest.",
+        "The repository contains the final question sheet, all seven anonymized and scaled annual transaction files, portable ingestion scripts, SQL for every analysis, validation checks, compact CSV outputs, and documentation for rebuilding the local SQLite database. The included files can be verified with the published checksum manifest.",
     )
     paragraph = doc.add_paragraph()
     paragraph.paragraph_format.space_before = Pt(4)
@@ -694,7 +694,7 @@ def build_report():
     )
     add_body(
         doc,
-        "Rebuild sequence: normalize UTF-8 encoding, prepare reference data, build the canonical SQLite database, run the validation suite, and execute the question-level analysis scripts. The companion Excel workbook provides a compact reviewer path without attempting to place the 3.7-million-row fact table into a worksheet.",
+        "Rebuild sequence: normalize UTF-8 encoding, prepare reference data, build the final SQLite database, run the validation suite, and execute the question-level analysis scripts. The companion Excel workbook provides a compact reviewer path without attempting to place the 3.7-million-row fact table into a worksheet.",
     )
     add_callout(
         doc,

@@ -69,4 +69,4 @@ python scripts/analyze_q2_q4.py
 
 ## Validation Notes
 
-All Question 3 checks pass: 3,230 unique customers, unique revenue ranks for every customer, customer revenue reconciled to the canonical transaction table within one cent, final cumulative revenue equal to 100.0000%, and largest-customer share below the two-percent reasonableness threshold.
+All Question 3 checks pass: 3,230 unique customers, unique revenue ranks for every customer, customer revenue reconciled to the final transaction table within one cent, final cumulative revenue equal to 100.0000%, and largest-customer share below the two-percent reasonableness threshold.

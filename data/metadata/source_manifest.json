@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "dataset_host_url": null,
-  "dataset_license": "To be selected before publication",
-  "expected_download_directory": "data/raw/transactions",
+  "distribution": "included_in_repository",
+  "transaction_directory": "data/raw/transactions",
+  "data_license": "No separate data license selected",
   "annual_transaction_files": [
     {
       "file_name": "itmsls2018.csv",
@@ -59,6 +59,12 @@
       "file_name": "CustomerSegmentationData.csv",
       "bytes": 2060,
       "sha256": "c28399b31f36cc5ab21443e79e771ebed47a97a6130285101941e09dfd10fa68",
+      "encoding": "UTF-8"
+    },
+    {
+      "file_name": "CustomerData.csv",
+      "bytes": 518994,
+      "sha256": "47c1d045351ce7aa19cd2cd2757780596b1976e10087942ad34d792bb6d85f6d",
       "encoding": "UTF-8"
     }
   ],

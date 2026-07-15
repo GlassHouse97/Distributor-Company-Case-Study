@@ -1,4 +1,4 @@
-"""Generate checksums for the externally hosted annual transaction files."""
+"""Generate checksums for the public transaction and reference files."""
 
 from __future__ import annotations
 
@@ -61,7 +61,7 @@ def main() -> None:
         for path in annual_files
     ]
     references = []
-    for file_name in ["CustomerSegmentationData.csv"]:
+    for file_name in ["CustomerSegmentationData.csv", "CustomerData.csv"]:
         path = REFERENCE_DIR / file_name
         references.append(
             {
@@ -74,9 +74,9 @@ def main() -> None:
 
     manifest = {
         "schema_version": "1.0",
-        "dataset_host_url": None,
-        "dataset_license": "To be selected before publication",
-        "expected_download_directory": "data/raw/transactions",
+        "distribution": "included_in_repository",
+        "transaction_directory": "data/raw/transactions",
+        "data_license": "No separate data license selected",
         "annual_transaction_files": files,
         "public_reference_files": references,
         "total_transaction_rows": sum(item["data_rows"] for item in files),

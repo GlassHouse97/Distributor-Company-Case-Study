@@ -1,6 +1,6 @@
 # Solution
 
-This folder contains the author's analysis for the four canonical case-study questions and the final strategic synthesis defined in [`CASE_STUDY_QUESTIONS.md`](../CASE_STUDY_QUESTIONS.md).
+This folder contains the author's analysis for the four final case-study questions and the final strategic synthesis defined in [`CASE_STUDY_QUESTIONS.md`](../CASE_STUDY_QUESTIONS.md).
 
 ## Solution Structure
 
@@ -32,7 +32,7 @@ The analysis documents should report findings without exposing confidential or i
 
 ## Regenerate the Analysis
 
-After building the canonical SQLite database from the project root:
+After building the final SQLite database from the project root:
 
 ```bash
 python scripts/analyze_q1.py

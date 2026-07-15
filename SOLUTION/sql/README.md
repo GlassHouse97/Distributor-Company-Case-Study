@@ -1,6 +1,6 @@
 # SQL Queries
 
-This folder contains the reproducible SQLite SQL for all four canonical analyses. Filenames use the same numeric prefixes as the solution documents.
+This folder contains the reproducible SQLite SQL for all four final analyses. Filenames use the same numeric prefixes as the solution documents.
 
 | Prefix | Purpose |
 | --- | --- |

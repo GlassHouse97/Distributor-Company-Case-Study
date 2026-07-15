@@ -6,4 +6,4 @@ This directory contains locally generated analytical data stores.
 - Generated databases are intentionally ignored by Git because they are reproducible and may exceed repository hosting limits.
 - Quarterly extracts are not ingestion inputs because they duplicate the annual transaction partitions.
 
-Run `python scripts/build_canonical_database.py` from the project root to rebuild the database.
+Run `python scripts/build_final_database.py` from the project root to rebuild the database.

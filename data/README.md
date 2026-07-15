@@ -1,43 +1,60 @@
-# Data Directory
+# Public Data
 
-This directory keeps source inputs, generated data, and validation evidence in separate locations.
+This repository includes the complete scrubbed dataset required to reproduce the case study.
+
+## What Is Included
 
 ```text
 data/
-├── raw/
-│   ├── reference/        # Small public reference files
-│   └── transactions/     # Seven externally hosted annual transaction files
-├── processed/            # Reproducible local SQLite database
-└── metadata/             # Checksums, ingestion logs, and validation evidence
+|-- raw/
+|   |-- transactions/     # Seven annual UTF-8 transaction CSVs, 2018-2024
+|   `-- reference/        # Scrubbed customer, customer-class, and schema references
+|-- processed/            # Locally generated SQLite database; not committed
+`-- metadata/             # Checksums, ingestion logs, and validation evidence
 ```
 
-## Reference Data
+The public files contain anonymized identifiers and scaled financial values. They preserve the analytical structure, trends, relationships, edge cases, and multi-year behavior of the source data without publishing the source company's actual identifying or financial information.
 
-`data/raw/reference/` contains:
+## Transaction Data
 
-- `CustomerSegmentationData.csv`: the 67-row historical customer-class mapping.
-- `schema.xlsx`: the original source-field dictionary.
+[`raw/transactions/`](raw/transactions/) contains:
 
-`CustomerData.csv` is an optional local supplement and is intentionally absent from the public repository because the source version contains customer numbers, locations, and salesperson names. The canonical transaction analysis does not require it.
+```text
+itmsls2018.csv
+itmsls2019.csv
+itmsls2020.csv
+itmsls2021.csv
+itmsls2022.csv
+itmsls2023.csv
+itmsls2024.csv
+```
 
-## Annual Transaction Data
-
-The seven `itmsls20xx.csv` files contain the authoritative transaction history. They will be distributed through an external dataset host rather than committed directly to GitHub.
-
-After downloading, place the files in `data/raw/transactions/` or set `DISTRO_TRANSACTIONS_DIR` to another location. Then verify them against `data/metadata/source_manifest.json`:
+These seven files contain 3,714,624 rows and are the authoritative transaction inputs. Verify their sizes, UTF-8 encoding, and SHA-256 checksums with:
 
 ```bash
 python scripts/verify_source_files.py
 ```
 
-## Generated Data and Local-Only Material
+Do not add the quarterly extracts. They are derived partitions of the same annual rows and would double-count transactions if loaded with the annual files.
 
-- `data/processed/distributor_case_study.sqlite` is reproducible and ignored by Git.
-- `data/metadata/` contains small, publishable validation artifacts.
-- Private customer exports, scrub workbooks, quarterly duplicates, and legacy analysis files are intentionally kept outside the portfolio project.
+## Reference Data
 
-Non-technical readers can review the finished analysis without downloading the raw transaction data.
+[`raw/reference/`](raw/reference/) contains:
 
-## Public-Release Boundary
+- `CustomerSegmentationData.csv`: the 67-row historical customer-class mapping, including `37 = Legacy Customer`.
+- `CustomerData.csv`: a scrubbed supplemental customer reference used for current-state attributes such as geography and customer class.
+- `schema.xlsx`: the original source-field dictionary.
 
-The transaction fact analysis does not depend on customer names. Published customer-level outputs replace source customer numbers with labels such as `CUSTOMER_0001`, and the supplemental customer reference remains local-only unless a documented privacy review approves an anonymized replacement.
+Historical analysis always uses the customer class stored on each transaction. The current customer reference is supplemental and never rewrites historical financial classifications.
+
+## Generated Data
+
+`processed/distributor_case_study.sqlite` is built locally and intentionally excluded from Git because it can be recreated from the included public CSV files:
+
+```bash
+python scripts/prepare_reference_data.py
+python scripts/build_final_database.py
+python scripts/validate_final_database.py
+```
+
+See [`../docs/DATA_PIPELINE.md`](../docs/DATA_PIPELINE.md) for the complete reproduction workflow and [`metadata/source_manifest.json`](metadata/source_manifest.json) for file-level verification evidence.

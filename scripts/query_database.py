@@ -1,4 +1,4 @@
-"""Run an ad hoc read-only query against the canonical SQLite database."""
+"""Run an ad hoc read-only query against the final SQLite database."""
 
 from __future__ import annotations
 

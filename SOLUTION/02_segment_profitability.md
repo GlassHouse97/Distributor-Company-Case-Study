@@ -65,4 +65,4 @@ python scripts/analyze_q2_q4.py
 
 ## Validation Notes
 
-All Question 2 checks pass: 64 active historical segments, 84 recognized reporting months, revenue and gross profit reconciled to the canonical transaction table within one cent, and zero transaction rows with an unmapped customer class.
+All Question 2 checks pass: 64 active historical segments, 84 recognized reporting months, revenue and gross profit reconciled to the final transaction table within one cent, and zero transaction rows with an unmapped customer class.

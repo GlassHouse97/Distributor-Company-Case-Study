@@ -14,7 +14,10 @@
   },
   "customer": {
     "path": "CustomerData.csv",
-    "included": false,
-    "status": "Not included in the public repository; supplemental only."
+    "sha256_before": "47c1d045351ce7aa19cd2cd2757780596b1976e10087942ad34d792bb6d85f6d",
+    "sha256_after": "47c1d045351ce7aa19cd2cd2757780596b1976e10087942ad34d792bb6d85f6d",
+    "rows_after": 6610,
+    "included": true,
+    "modeling_role": "Supplemental only; transaction class remains authoritative."
   }
 }

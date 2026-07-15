@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "authoritative_financial_period": "period (YYMM)",
+  "authoritative_customer_class": "transaction_customer_class",
+  "quarterly_extracts_ingested": false,
+  "transaction_input_layout": "seven annual itmsls20xx.csv files",
+  "annual_source_files": [
+    "itmsls2018.csv",
+    "itmsls2019.csv",
+    "itmsls2020.csv",
+    "itmsls2021.csv",
+    "itmsls2022.csv",
+    "itmsls2023.csv",
+    "itmsls2024.csv"
+  ],
+  "file_metrics": [
+    {
+      "source_file": "itmsls2018.csv",
+      "rows": 406856,
+      "sales": 79377872.70059201,
+      "cost": 64174395.793945,
+      "gross_profit": 15203476.906647012
+    },
+    {
+      "source_file": "itmsls2019.csv",
+      "rows": 436872,
+      "sales": 83162014.63762799,
+      "cost": 66141104.548337996,
+      "gross_profit": 17020910.089289993
+    },
+    {
+      "source_file": "itmsls2020.csv",
+      "rows": 494162,
+      "sales": 88291665.825999,
+      "cost": 69363261.710842,
+      "gross_profit": 18928404.11515701
+    },
+    {
+      "source_file": "itmsls2021.csv",
+      "rows": 541492,
+      "sales": 103018819.87512198,
+      "cost": 80989500.073037,
+      "gross_profit": 22029319.802084982
+    },
+    {
+      "source_file": "itmsls2022.csv",
+      "rows": 574256,
+      "sales": 116090898.484456,
+      "cost": 91062540.35186,
+      "gross_profit": 25028358.132596
+    },
+    {
+      "source_file": "itmsls2023.csv",
+      "rows": 612189,
+      "sales": 123961543.696556,
+      "cost": 96986238.635027,
+      "gross_profit": 26975305.061528996
+    },
+    {
+      "source_file": "itmsls2024.csv",
+      "rows": 648797,
+      "sales": 130520126.208657,
+      "cost": 101788627.662064,
+      "gross_profit": 28731498.546592996
+    }
+  ],
+  "totals": {
+    "row_count": 3714624,
+    "sales": 724422941.42901,
+    "cost": 570505668.775113,
+    "gross_profit": 153917272.653897,
+    "return_rows": 22766,
+    "zero_sales_nonzero_cost_rows": 34780,
+    "nonzero_sales_zero_cost_rows": 6179,
+    "zero_sales_and_cost_rows": 1259,
+    "invoice_period_mismatch_rows": 274193,
+    "unmapped_customer_rows": 0,
+    "unmapped_class_rows": 0,
+    "rows_in_duplicate_groups": 273,
+    "duplicate_groups": 127.0
+  },
+  "database_path": "data/processed/distributor_case_study.sqlite",
+  "database_bytes": 1365639168,
+  "sqlite_integrity_check": "ok"
+}

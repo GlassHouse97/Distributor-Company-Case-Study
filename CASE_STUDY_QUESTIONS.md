@@ -1,6 +1,6 @@
 # Revenue Quality & Customer Profitability Case Study
 
-## Canonical Case Study Question Sheet
+## Final Case Study Question Sheet
 
 This document defines the official scope of the Distributor Company Case Study. It is aligned with the GitHub README and replaces the previous seven-question prompt as the project's source of truth.
 

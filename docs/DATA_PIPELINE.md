@@ -5,7 +5,7 @@
 The project supports two audiences:
 
 1. Business readers can review the final executive summary without downloading or querying the source data.
-2. Analysts can reproduce the canonical dataset, inspect the quality rules, and run their own SQL analysis.
+2. Analysts can reproduce the final dataset, inspect the quality rules, and run their own SQL analysis.
 
 The pipeline uses relative paths, portable Python scripts, and SQLite. It does not depend on a particular cloud account, workstation path, or proprietary database.
 
@@ -27,7 +27,7 @@ itmsls2024.csv
 
 The pipeline reads `data/raw/transactions/` by default. A different location can be supplied with `--transactions-dir` or `DISTRO_TRANSACTIONS_DIR`.
 
-After downloading the externally hosted files, verify their SHA-256 checksums:
+The files are included in the repository. After cloning, verify their SHA-256 checksums:
 
 ```bash
 python scripts/verify_source_files.py
@@ -36,7 +36,7 @@ python scripts/verify_source_files.py
 ### Reference inputs
 
 - `data/raw/reference/CustomerSegmentationData.csv` maps historical transaction class codes to descriptions.
-- An optional local `data/raw/reference/CustomerData.csv` can contain supplemental current customer attributes. It is excluded from the public repository.
+- `data/raw/reference/CustomerData.csv` contains scrubbed supplemental current customer attributes.
 
 Historical transaction values remain authoritative. The customer reference is never used to rewrite a transaction's class.
 
@@ -65,19 +65,19 @@ This stage:
 - reduces the segmentation file to its two useful columns;
 - retains the original 66 valid class mappings;
 - adds `37 = Legacy Customer`;
-- validates and cleans `CustomerData.csv` only when a private local copy is supplied;
+- validates and cleans the included scrubbed `CustomerData.csv`;
 - preserves every transaction even when no supplemental customer record exists, flagging the missing reference and exposing `Unmapped` supplemental text in the enriched view.
 
-### 3. Canonical database build
+### 3. Final database build
 
 ```bash
-python scripts/build_canonical_database.py
+python scripts/build_final_database.py
 ```
 
 Optional explicit paths:
 
 ```bash
-python scripts/build_canonical_database.py \
+python scripts/build_final_database.py \
   --transactions-dir data/raw/transactions \
   --database data/processed/distributor_case_study.sqlite
 ```
@@ -87,7 +87,7 @@ The build is atomic. A temporary database is created first and replaces the fina
 ### 4. Validation
 
 ```bash
-python scripts/validate_canonical_database.py
+python scripts/validate_final_database.py
 ```
 
 The validation suite checks:
@@ -103,16 +103,16 @@ The validation suite checks:
 - financial exception flags;
 - exact-duplicate candidate counts.
 
-Results are stored in `data/metadata/canonical_validation_report.json`.
+Results are stored in `data/metadata/final_validation_report.json`.
 
-## Canonical Database Objects
+## Final Database Objects
 
 | Object | Type | Purpose |
 | --- | --- | --- |
-| `total_sales` | Table | Canonical transaction fact table with provenance, derived dates, descriptions, and quality flags. |
+| `total_sales` | Table | Final transaction fact table with provenance, derived dates, descriptions, and quality flags. |
 | `customer_class_reference` | Table | The 67 historical customer-class mappings. |
-| `customer_reference` | Table | Optional supplemental current customer attributes; empty when the private local file is absent. |
-| `total_sales_enriched` | View | Optional join from the canonical fact to current customer attributes. |
+| `customer_reference` | Table | Scrubbed supplemental current customer attributes. |
+| `total_sales_enriched` | View | Optional join from the final fact to current customer attributes. |
 | `ingestion_metadata` | Table | Modeling rules and source-file metadata. |
 
 ## Accounting Period Rule
@@ -124,7 +124,7 @@ YYMM = period
 2604 = April 2026
 ```
 
-The canonical table also contains:
+The final table also contains:
 
 - `period_date`: first calendar day of the recognized-revenue month;
 - `per_month`: month number;
@@ -175,16 +175,11 @@ Excel should be used for these compact outputs, not for the four-million-row fac
 
 ## Publication Model
 
-The final public package will consist of:
-
-- GitHub: code, SQL, documentation, approved non-identifying reference data, validation reports, visuals, and final deliverables;
-- external dataset host: the seven annual transaction CSVs and checksums;
-- executive deliverable: a concise report accessible without running the pipeline;
-- generated local store: SQLite database, excluded from version control.
+The public GitHub repository contains the complete reproducible package: annual transaction CSVs, scrubbed reference data, code, SQL, documentation, validation reports, visuals, and final deliverables. The generated SQLite database remains excluded from version control because every user can rebuild it from the included CSV files.
 
 ## Analysis and Deliverable Build
 
-After the canonical database passes validation:
+After the final database passes validation:
 
 ```bash
 python scripts/analyze_q1.py
@@ -197,4 +192,4 @@ The analysis scripts execute the versioned SQL, export compact CSV result tables
 
 `analyze_q2_q4.py` automatically replaces source customer numbers in the three customer-level public outputs with stable labels such as `CUSTOMER_0001`. `scripts/sanitize_public_outputs.py` can also be run independently before rebuilding the workbook.
 
-See `docs/PUBLICATION_CHECKLIST.md` for the remaining external-host, licensing, privacy, and release checks.
+See `docs/PUBLICATION_CHECKLIST.md` for final release and signed-out accessibility checks.
