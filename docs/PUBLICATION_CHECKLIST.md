@@ -38,7 +38,7 @@ Completed on July 16, 2026 with the bundled project Python runtime.
 - [x] Open the repository while signed out and confirm the landing page, executive summary, source folders, and download links are accessible. A credential-free clone also completed successfully.
 - [x] Confirm that the repository landing page clearly presents Read, Download, and Reproduce paths.
 - [x] Consider a formal code and data license. The current decision is recorded as `No separate data license selected`; select one before granting reuse rights beyond portfolio review and reproduction.
-- [ ] Tag the first public version, such as `v1.0.0`, after the signed-out and clean-clone checks pass.
+- [x] Tag the first public version as `v1.0.0` after the signed-out and clean-clone checks passed.
 
 ## Portfolio Review
 
@@ -49,4 +49,4 @@ Completed on July 16, 2026 with the bundled project Python runtime.
 
 ## Current Status
 
-The public repository's data, scripts, analysis outputs, Word report, Excel workbook, links, privacy checks, responsive review, and automated clean-clone reproduction are complete. The remaining release items are the version tag and the two independent human reviews above.
+The public repository's data, scripts, analysis outputs, Word report, Excel workbook, links, privacy checks, responsive review, automated clean-clone reproduction, and `v1.0.0` release tag are complete. The only remaining checklist items are the two independent human reviews above.
