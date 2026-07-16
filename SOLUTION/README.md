@@ -34,7 +34,6 @@ After building the final SQLite database from the repository root:
 python scripts/analyze_q1.py
 python scripts/analyze_q2_q4.py
 python scripts/build_business_report.py
-node scripts/build_analysis_workbook.mjs
 ```
 
-These commands regenerate the analysis outputs, visuals, Word report, and Excel workbook in this folder.
+These commands regenerate the analysis outputs, visuals, and Word report. The included Excel workbook is a finished portfolio download assembled from the same published CSV outputs; it is not part of the required analytical pipeline.

@@ -1,5 +1,0 @@
-*.sqlite
-*.sqlite-*
-*.db
-*.parquet
-!README.md

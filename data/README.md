@@ -20,14 +20,21 @@ On GitHub, select a CSV and use **Download raw file**. Analysts who want the com
 
 The public data is a scrubbed analytical model of a real distributor dataset. Identifiers were anonymized and financial values were scaled to protect the source company while preserving the structure, relationships, trends, edge cases, and analytical usefulness of the data. The figures do not represent the source company's actual financial results.
 
-## Data Folder Guide
+## Why There Are Three Folders
+
+Each folder has one job. Most readers only need **`transactions/`**.
+
+| Folder | What it contains | Who needs it |
+| --- | --- | --- |
+| [`transactions/`](transactions/) | The seven large annual CSV files used as the main analytical input | Anyone downloading or reproducing the analysis |
+| [`reference/`](reference/) | Small lookup files that add customer-class descriptions and optional customer attributes | Analysts who want readable segment names or supplemental customer fields |
+| [`metadata/`](metadata/) | Checksums and validation receipts proving which files were loaded and whether the build passed | Reviewers auditing data quality or maintainers checking the release |
 
 ```text
 data/
 |-- transactions/    # Seven public annual transaction CSVs
 |-- reference/       # Customer, customer-class, and field references
 |-- metadata/        # Checksums, ingestion records, and validation evidence
-|-- processed/       # Locally generated SQLite database; ignored by Git
 `-- README.md         # This download and analyst guide
 ```
 
@@ -48,6 +55,10 @@ The transaction row's customer class remains the historical reporting authority.
 ### Metadata
 
 [`metadata/`](metadata/) contains the published file checksums and the ingestion and validation evidence produced by the pipeline.
+
+### Generated local database
+
+`data/processed/` is **not a fourth source-data category on GitHub**. The build script creates it on your computer and writes `distributor_case_study.sqlite` there. Git ignores that generated database because it is about 1.36 GB locally and can be rebuilt from the seven public CSVs.
 
 ## Reproduce the Dataset
 

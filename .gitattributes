@@ -1,0 +1,7 @@
+# Preserve public data and portfolio downloads byte-for-byte on every operating system.
+# This keeps published SHA-256 checksums stable when Git is used on Windows.
+*.csv binary
+*.xlsx binary
+*.docx binary
+*.png binary
+*.sqlite binary

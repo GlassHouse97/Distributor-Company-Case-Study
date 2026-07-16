@@ -185,10 +185,9 @@ After the final database passes validation:
 python scripts/analyze_q1.py
 python scripts/analyze_q2_q4.py
 python scripts/build_business_report.py
-node scripts/build_analysis_workbook.mjs
 ```
 
-The analysis scripts execute the versioned SQL, export compact CSV result tables, validate the question-level scope, and regenerate the charts. The final two commands package the same validated outputs for business and analyst audiences.
+The analysis scripts execute the versioned SQL, export compact CSV result tables, validate the question-level scope, and regenerate the charts. The final command packages the same validated outputs into the Word report. The published Excel workbook is a convenience deliverable built from those result tables and is not required to reproduce the analysis.
 
 `analyze_q2_q4.py` automatically replaces source customer numbers in the three customer-level public outputs with stable labels such as `CUSTOMER_0001`. `scripts/sanitize_public_outputs.py` can also be run independently before rebuilding the workbook.
 

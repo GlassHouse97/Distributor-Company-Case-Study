@@ -38,6 +38,8 @@ python scripts/analyze_q2_q4.py
 
 This creates the final SQLite analysis database at `data/processed/distributor_case_study.sqlite` and regenerates the question-level outputs and visuals. See the [complete reproduction guide](docs/DATA_PIPELINE.md) for modeling rules, database objects, and query examples.
 
+The [script guide](scripts/README.md) explains which scripts are required, optional, or only used when maintaining the published data.
+
 ## Results at a Glance
 
 - Recognized revenue grew **65.0%** from 2018 to 2024; gross profit grew **89.6%**, and gross margin expanded from **19.15% to 22.01%**.
@@ -96,7 +98,6 @@ flowchart LR
 |-- data/
 |   |-- transactions/                 # Seven downloadable annual CSV files
 |   |-- reference/                    # Scrubbed customer and class references
-|   |-- processed/                    # Locally generated SQLite database
 |   `-- metadata/                     # Checksums and validation evidence
 |-- docs/                              # Pipeline, dictionary, and release notes
 |-- scripts/                           # Ingestion, validation, and analysis code
@@ -114,13 +115,14 @@ flowchart LR
     `-- visualizations/
 ```
 
-## Regenerate the Downloadable Deliverables
+The pipeline creates `data/processed/` locally for the generated SQLite database. That generated folder is intentionally absent from GitHub because the database can be rebuilt from the included CSV files.
+
+## Regenerate the Analysis and Word Report
 
 After the final database passes validation:
 
 ```bash
 python scripts/build_business_report.py
-node scripts/build_analysis_workbook.mjs
 ```
 
-The finished files are written directly to [`SOLUTION/`](SOLUTION/), alongside the browser-readable analysis, supporting SQL, outputs, and visuals.
+The analysis scripts regenerate the result tables and visuals, and the final command rebuilds the Word report. The included Excel workbook is a finished portfolio download assembled from the same published result tables; it is not required to reproduce or inspect the analysis.
