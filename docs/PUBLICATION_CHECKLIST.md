@@ -30,22 +30,23 @@ Completed on July 16, 2026 with the bundled project Python runtime.
 - [x] Regenerate the Excel analysis workbook, scan for formula errors, and inspect all ten rendered sheets.
 - [x] Confirm every relative link in the root README resolves to an existing file or folder.
 - [x] Search the repository text, Word package, and Excel package for private machine paths and source-company identifiers; none were found.
+- [x] Clone the public repository without a credential helper, create a new virtual environment, install `requirements.txt`, and run the full pipeline through the rebuilt Word report.
 
 ## Public Release
 
-- [ ] Change the GitHub repository visibility to public. This remains an owner decision and has not been changed automatically.
-- [ ] Open the public repository while signed out and verify that every file and link is accessible.
+- [x] Confirm that the GitHub repository is public.
+- [x] Open the repository while signed out and confirm the landing page, executive summary, source folders, and download links are accessible. A credential-free clone also completed successfully.
 - [x] Confirm that the repository landing page clearly presents Read, Download, and Reproduce paths.
 - [x] Consider a formal code and data license. The current decision is recorded as `No separate data license selected`; select one before granting reuse rights beyond portfolio review and reproduction.
 - [ ] Tag the first public version, such as `v1.0.0`, after the signed-out and clean-clone checks pass.
 
 ## Portfolio Review
 
-- [ ] Read the GitHub executive summary at desktop and phone widths after the revised files are pushed.
+- [x] Read the GitHub executive summary at desktop and phone widths after the revised files were pushed; both layouts load without horizontal overflow.
 - [x] Verify that the report, workbook, and charts do not expose source-company names or private machine paths.
 - [ ] Ask one non-technical reviewer to explain the business story after a two-minute scan.
 - [ ] Ask one technical reviewer to rebuild the database and run at least one SQL analysis from a clean environment.
 
 ## Current Status
 
-The repository's data, scripts, analysis outputs, Word report, Excel workbook, links, and privacy checks are complete. The project should remain in pre-publication status until the owner completes the public-visibility, signed-out access, version-tag, and two human-review checks above.
+The public repository's data, scripts, analysis outputs, Word report, Excel workbook, links, privacy checks, responsive review, and automated clean-clone reproduction are complete. The remaining release items are the version tag and the two independent human reviews above.

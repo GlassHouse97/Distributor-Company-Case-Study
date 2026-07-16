@@ -1,4 +1,4 @@
-"""Convert every project CSV to UTF-8 without changing its decoded content."""
+"""Convert public project CSVs to UTF-8 without changing decoded content."""
 
 from __future__ import annotations
 
@@ -15,6 +15,13 @@ METADATA_DIR = PROJECT_ROOT / "data" / "metadata"
 REPORT_PATH = METADATA_DIR / "utf8_conversion_manifest.json"
 VALIDATION_REPORT_PATH = METADATA_DIR / "utf8_validation_manifest.json"
 READ_SIZE = 1024 * 1024
+EXCLUDED_DIRECTORY_NAMES = {
+    ".git",
+    ".venv",
+    "venv",
+    "env",
+    "__pycache__",
+}
 
 
 def sha256_file(path: Path) -> str:
@@ -72,6 +79,29 @@ def transcode(path: Path, source_encoding: str) -> None:
             temp_path.unlink()
 
 
+def project_csv_paths() -> list[Path]:
+    """Return repository CSVs while pruning virtual environments and generated data."""
+    csv_paths: list[Path] = []
+    for root, directory_names, file_names in os.walk(PROJECT_ROOT):
+        directory_names[:] = [
+            name
+            for name in directory_names
+            if name.lower() not in EXCLUDED_DIRECTORY_NAMES
+        ]
+        root_path = Path(root)
+        relative_root = root_path.relative_to(PROJECT_ROOT)
+        relative_parts = tuple(part.lower() for part in relative_root.parts)
+        if relative_parts[:2] == ("data", "processed"):
+            directory_names.clear()
+            continue
+        csv_paths.extend(
+            root_path / file_name
+            for file_name in file_names
+            if file_name.lower().endswith(".csv")
+        )
+    return sorted(csv_paths)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -81,12 +111,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    csv_paths = sorted(
-        path
-        for path in PROJECT_ROOT.rglob("*.csv")
-        if tuple(part.lower() for part in path.relative_to(PROJECT_ROOT).parts[:2])
-        != ("data", "processed")
-    )
+    csv_paths = project_csv_paths()
     results = []
 
     for path in csv_paths:
