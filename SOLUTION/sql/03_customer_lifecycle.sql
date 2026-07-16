@@ -1,4 +1,4 @@
--- Question 4: customer inactivity and revenue at risk.
+-- Question 3: customer inactivity and revenue at risk.
 -- Positive sales define purchase activity. Revenue at risk is net recognized
 -- revenue in the 12 months ending with the customer's last positive-sale
 -- period, floored at zero and assigned only to non-active customers.

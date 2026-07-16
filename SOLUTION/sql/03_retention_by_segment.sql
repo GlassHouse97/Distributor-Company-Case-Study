@@ -1,4 +1,4 @@
--- Question 4: retention risk by the customer's last active historical class.
+-- Question 3: retention risk by the customer's last active historical class.
 
 WITH parameters AS (
     SELECT MAX(per_year * 12 + per_month) AS latest_period_index

@@ -1,4 +1,4 @@
--- Question 3: customer-level recognized-revenue concentration.
+-- Question 2: customer-level recognized-revenue concentration.
 -- Customer numbers are identifiers only; no customer names are exposed.
 
 WITH customer_performance AS (

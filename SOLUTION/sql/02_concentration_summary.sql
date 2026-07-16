@@ -1,4 +1,4 @@
--- Question 3: customer- and segment-level concentration summary.
+-- Question 2: customer- and segment-level concentration summary.
 
 WITH customers AS (
     SELECT customer_number, SUM(sales) AS revenue

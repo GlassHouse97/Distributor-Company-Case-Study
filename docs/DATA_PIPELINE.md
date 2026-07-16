@@ -27,6 +27,8 @@ itmsls2024.csv
 
 The pipeline reads `data/transactions/` by default. A different location can be supplied with `--transactions-dir` or `DISTRO_TRANSACTIONS_DIR`.
 
+Only the seven annual files are loaded. Quarterly versions contain the same transactions and would double-count sales if they were loaded with the annual files.
+
 The files are included in the repository. After cloning, verify their SHA-256 checksums:
 
 ```bash
@@ -40,19 +42,15 @@ python scripts/verify_source_files.py
 
 Historical transaction values remain authoritative. The customer reference is never used to rewrite a transaction's class.
 
-### Files that are not inputs
-
-Quarterly extracts, private identifying customer exports, scrub workbooks, and legacy Excel analyses are not part of the portfolio project. Quarterly extracts duplicate the annual transaction rows and must never be loaded alongside them.
-
 ## Pipeline Stages
 
 ### 1. Encoding normalization
 
 ```bash
-python scripts/convert_csv_to_utf8.py
+python scripts/convert_csv_to_utf8.py --check-only
 ```
 
-The script recursively checks every project CSV, converts non-UTF-8 files atomically, verifies strict UTF-8 decoding, and confirms that line counts are unchanged. Results are stored in `data/metadata/utf8_conversion_manifest.json`.
+The script checks every project CSV with strict UTF-8 decoding and confirms that line counts are unchanged. The published result is stored in `data/metadata/utf8_validation_manifest.json`. Maintainers can run the script without `--check-only` when a newly added CSV actually needs conversion.
 
 ### 2. Reference preparation
 
@@ -177,18 +175,20 @@ Excel should be used for these compact outputs, not for the four-million-row fac
 
 The public GitHub repository contains the complete reproducible package: annual transaction CSVs, scrubbed reference data, code, SQL, documentation, validation reports, visuals, and final deliverables. The generated SQLite database remains excluded from version control because every user can rebuild it from the included CSV files.
 
-## Analysis and Deliverable Build
+## Analysis and Report Build
 
 After the final database passes validation:
 
 ```bash
 python scripts/analyze_q1.py
-python scripts/analyze_q2_q4.py
+python scripts/analyze_q2.py
+python scripts/analyze_q3.py
+python scripts/analyze_q4.py
 python scripts/build_business_report.py
 ```
 
-The analysis scripts execute the versioned SQL, export compact CSV result tables, validate the question-level scope, and regenerate the charts. The final command packages the same validated outputs into the Word report. The published Excel workbook is a convenience deliverable built from those result tables and is not required to reproduce the analysis.
+Each question script runs its own SQL, exports compact result tables, checks its expected scope, writes a summary file, and regenerates its chart. The final command packages the same final outputs into the Word report. The published Excel workbook is a convenience download built from those result tables and is not required to reproduce the analysis.
 
-`analyze_q2_q4.py` automatically replaces source customer numbers in the three customer-level public outputs with stable labels such as `CUSTOMER_0001`. `scripts/sanitize_public_outputs.py` can also be run independently before rebuilding the workbook.
+Questions 2 and 3 automatically replace source customer numbers with stable labels such as `CUSTOMER_0001`. Both scripts use the same database-backed label map, so they can run independently without producing inconsistent public IDs.
 
 See `docs/PUBLICATION_CHECKLIST.md` for final release and signed-out accessibility checks.

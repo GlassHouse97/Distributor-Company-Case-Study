@@ -1,6 +1,6 @@
--- Question 2: customer-segment scale and profitability.
+-- Question 1: customer-segment scale and profitability.
 -- Uses historical customer class stored on each transaction and the same
--- complete-year reporting window as Question 1.
+-- complete-year reporting window used throughout the case study.
 
 WITH segment_performance AS (
     SELECT

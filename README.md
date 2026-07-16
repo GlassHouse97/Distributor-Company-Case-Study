@@ -33,7 +33,9 @@ python scripts/prepare_reference_data.py
 python scripts/build_final_database.py
 python scripts/validate_final_database.py
 python scripts/analyze_q1.py
-python scripts/analyze_q2_q4.py
+python scripts/analyze_q2.py
+python scripts/analyze_q3.py
+python scripts/analyze_q4.py
 ```
 
 This creates the final SQLite analysis database at `data/processed/distributor_case_study.sqlite` and regenerates the question-level outputs and visuals. See the [complete reproduction guide](docs/DATA_PIPELINE.md) for modeling rules, database objects, and query examples.
@@ -42,18 +44,18 @@ The [script guide](scripts/README.md) explains which scripts are required, optio
 
 ## Results at a Glance
 
-- Recognized revenue grew **65.0%** from 2018 to 2024; gross profit grew **89.6%**, and gross margin expanded from **19.15% to 22.01%**.
-- Independent Retail Accounts generated **48.75% of revenue** and **51.37% of gross profit**, making the segment both the core economic engine and the main segment-level exposure.
+- Independent Retail Accounts generated **48.75% of revenue** and **51.37% of gross profit**, making it the company's largest customer segment.
 - The largest customer generated only **1.13% of revenue**; it takes **599 customers** to reach 80% of revenue, but only seven customer segments.
-- Non-active customers carry a **$23.0 million trailing revenue baseline**, equal to **17.60% of 2024 revenue**. This is a reactivation-opportunity measure, not a forecast.
+- Non-active customers carry a **$23.0 million trailing revenue baseline**, equal to **17.60% of 2024 revenue**. This is a historical measure, not a forecast.
+- Recognized revenue grew **65.0%** from 2018 to 2024; gross profit grew **89.6%**, and gross margin improved from **19.15% to 22.01%**.
 
 ## Business Questions
 
-1. Is recognized revenue growth translating into sustainable gross-profit growth?
-2. Which customer segments drive profitable growth rather than revenue alone?
-3. Is the business overly dependent on a small number of customers or segments?
-4. Which customers appear inactive or at risk, and how much revenue is associated with that risk?
-5. How should strategic focus shift to improve the overall quality of revenue?
+1. Which customer segments bring in the most revenue and gross profit?
+2. Does the company depend too heavily on a small number of customers or segments?
+3. Which customers appear inactive, and how much recent revenue is connected to them?
+4. Are revenue and gross profit growing, and is gross margin improving?
+5. What should leadership focus on next based on all four analyses?
 
 ## Public Dataset
 
@@ -105,10 +107,10 @@ flowchart LR
     |-- EXECUTIVE_SUMMARY.md
     |-- Distributor_Case_Study_Report.docx
     |-- Distributor_Case_Study_Analysis.xlsx
-    |-- 01_revenue_margin_trends.md
-    |-- 02_segment_profitability.md
-    |-- 03_revenue_concentration.md
-    |-- 04_customer_retention.md
+    |-- 01_segment_profitability.md
+    |-- 02_revenue_concentration.md
+    |-- 03_customer_retention.md
+    |-- 04_revenue_margin_trends.md
     |-- 05_strategic_synthesis.md
     |-- outputs/
     |-- sql/

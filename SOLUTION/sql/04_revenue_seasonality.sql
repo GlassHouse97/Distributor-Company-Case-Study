@@ -1,4 +1,4 @@
--- Question 1 supporting output: average month-of-year performance.
+-- Question 4 supporting output: average month-of-year performance.
 
 WITH monthly_performance AS (
     SELECT

@@ -1,4 +1,4 @@
--- Question 4: top 100 customers for retention or reactivation review.
+-- Question 3: top 100 customers for retention or reactivation review.
 -- The publication pipeline replaces source customer numbers with anonymized labels.
 -- At-risk customers are prioritized before watch and dormant customers.
 

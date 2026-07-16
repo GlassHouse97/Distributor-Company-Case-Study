@@ -1,6 +1,6 @@
 check_name,actual_value,expected_value,status
-active_segment_count,64,64,PASS
-complete_reporting_months,84,84,PASS
-segment_gross_profit_reconciliation,0.00,0.00,PASS
-segment_revenue_reconciliation,0.00,0.00,PASS
-unmapped_transaction_class_rows,0,0,PASS
+customer_count,3230,3230,PASS
+customer_revenue_reconciliation,0.00,0.00,PASS
+final_cumulative_revenue_pct,100.0000,100.0000,PASS
+top_customer_below_two_pct,1.1305,<2.0000,PASS
+unique_customer_ranks,3230,3230,PASS

@@ -2,38 +2,38 @@
 
 ## Business Question
 
-How should the company improve the quality of revenue—not only top-line growth, but also profitability, diversification, and customer durability?
+Where is the company's revenue coming from, how risky is the customer base, which inactive customers may be worth contacting, and is growth producing more gross profit?
 
-## Executive Answer
+## Short Answer
 
-The company’s 2018–2024 growth was profitable and broadly diversified across individual customers. Recognized revenue increased every year, gross profit grew faster, and gross margin expanded. The main strategic exposures are concentrated at the customer-segment level and in a sizable dormant-account pool. Leadership should protect the profitable Independent Retail core, improve margin in large under-monetized segments, and manage retention through a value-based outreach queue.
+The company has a healthy financial history. Revenue increased every year from 2018 through 2024, gross profit grew faster than revenue, and gross margin improved. The company is not dependent on a few individual customers, but it does depend heavily on the Independent Retail segment. It also has a large group of inactive customers, although only a smaller group should be treated as an immediate outreach priority.
 
 ## Headline Findings
 
-1. **Growth became more profitable.** Revenue rose from $79.4 million in 2018 to $131.0 million in 2024, an increase of 65.0%. Gross profit increased 89.6%, and gross margin expanded from 19.15% to 22.01%.
-2. **Independent Retail is the economic engine.** The segment produced 48.75% of revenue, 51.37% of gross profit, and 43.04% of the company’s 2018–2024 revenue increase at a 22.39% historical margin.
-3. **Single-customer dependency is low; segment dependency is meaningful.** The largest customer accounts for 1.13% of revenue, while the largest segment accounts for 48.75%. It takes 599 customers—18.54% of the portfolio—to reach 80% of revenue, but only seven segments.
-4. **The reactivation opportunity is concentrated.** Non-active customers carry a $23.0 million trailing revenue baseline, equal to 17.60% of 2024 revenue. Dormant accounts represent 82.27% of this amount.
-5. **Recent growth is maturing.** Annual revenue growth was approximately 6% in both 2023 and 2024 after double-digit growth in 2021 and 2022. Margin expansion suggests slower growth has not yet weakened economics.
+1. **Independent Retail is the largest source of revenue and profit.** It produced 48.75% of revenue, 51.37% of gross profit, and 43.04% of the company's revenue increase from 2018 to 2024.
+2. **Individual-customer dependence is low.** The largest customer accounts for 1.13% of revenue, while the top 10 account for 7.09%. It takes 599 customers to reach 80% of revenue.
+3. **Non-active customers have a meaningful recent revenue history.** Their trailing revenue baseline is $23.0 million, equal to 17.60% of 2024 revenue. This is a historical measure, not a forecast of future loss.
+4. **Growth has been profitable.** Revenue rose from $79.4 million in 2018 to $131.0 million in 2024. Gross profit increased 89.6%, and gross margin improved from 19.15% to 22.01%.
+5. **Growth has slowed from its strongest years.** Revenue grew about 6% in both 2023 and 2024 after double-digit growth in 2021 and 2022. Gross profit still grew faster than revenue in 2024.
 
 ## Recommended Actions
 
-| Priority | Action | Why it matters | Primary success measure |
-| ---: | --- | --- | --- |
-| 1 | Protect Independent Retail and build targeted growth in high-margin segments | Defends the largest profit pool while improving diversification | Core retention and margin; new GP from target segments |
-| 2 | Launch a monthly value-based retention queue | Directs outreach toward recent, high-value risk instead of treating all inactive accounts equally | Reactivation rate and recovered gross profit |
-| 3 | Review pricing and cost-to-serve in large margin-light segments | Converts existing scale into profit without relying only on acquisition | Segment margin and GP share vs. revenue share |
+| Priority | Action | Why it matters |
+| ---: | --- | --- |
+| 1 | Protect Independent Retail while testing growth in smaller high-margin segments | Protects the largest source of gross profit and gradually improves diversification |
+| 2 | Contact recent, high-value inactive customers first | Uses sales time on customers with the clearest recent value |
+| 3 | Review margins in large segments such as Wholesale Trade | Small margin improvements in a large segment can add meaningful gross profit |
 
-## What the Analysis Does—and Does Not—Claim
+## What the Analysis Does Not Prove
 
-Financial reporting uses recognized accounting `Period`, and historical segment reporting uses the class recorded on each transaction. Returns and credits remain in the ledger. The revenue-at-risk measure is a trailing historical baseline for non-active customers; it is not a forecast of future loss. Gross profit does not include operating expenses, and the results should not be interpreted as net profitability or predictive churn modeling.
+The analysis is based on recognized accounting `Period`, and historical segment reporting uses the class stored on each transaction. Returns and credits remain in the data. Inactivity does not prove churn, and the revenue-at-risk figure does not predict future loss. Gross profit also excludes operating expenses, so it should not be read as net profit.
 
-## Analysis Details
+## Read the Full Answers
 
-- [Revenue and Margin Trends](01_revenue_margin_trends.md)
-- [Segment Profitability](02_segment_profitability.md)
-- [Revenue Concentration](03_revenue_concentration.md)
-- [Customer Retention](04_customer_retention.md)
-- [Strategic Synthesis](05_strategic_synthesis.md)
+1. [Customer Segment Profitability](01_segment_profitability.md)
+2. [Revenue Concentration](02_revenue_concentration.md)
+3. [Customer Lifecycle and Retention Risk](03_customer_retention.md)
+4. [Revenue and Margin Trends](04_revenue_margin_trends.md)
+5. [Strategic Synthesis](05_strategic_synthesis.md)
 
-The SQL queries, result tables, validation evidence, visuals, and polished business-facing deliverables are organized within this `SOLUTION` area and the repository’s `deliverables` folder.
+The `SOLUTION` folder also contains the SQL queries, compact result tables, validation checks, charts, Word report, and Excel workbook.

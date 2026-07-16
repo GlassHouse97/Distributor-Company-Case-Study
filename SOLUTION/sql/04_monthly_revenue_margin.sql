@@ -1,4 +1,4 @@
--- Question 1 supporting output: monthly results and year-over-year comparisons.
+-- Question 4 supporting output: monthly results and year-over-year comparisons.
 
 WITH monthly_performance AS (
     SELECT

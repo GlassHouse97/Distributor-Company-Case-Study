@@ -1,4 +1,4 @@
--- Question 3: segment-level revenue concentration.
+-- Question 2: segment-level revenue concentration.
 
 WITH segment_performance AS (
     SELECT

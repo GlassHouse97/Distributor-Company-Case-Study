@@ -1,4 +1,4 @@
--- Question 4: customer count and revenue at risk by lifecycle bucket.
+-- Question 3: customer count and revenue at risk by lifecycle bucket.
 
 WITH parameters AS (
     SELECT MAX(per_year * 12 + per_month) AS latest_period_index

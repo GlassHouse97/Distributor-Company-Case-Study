@@ -12,10 +12,10 @@ Everything produced for the finished case study is collected in this folder: the
 
 | Question | Analysis |
 | --- | --- |
-| 1. Revenue and margin trends | [`01_revenue_margin_trends.md`](01_revenue_margin_trends.md) |
-| 2. Segment profitability | [`02_segment_profitability.md`](02_segment_profitability.md) |
-| 3. Revenue concentration | [`03_revenue_concentration.md`](03_revenue_concentration.md) |
-| 4. Customer retention | [`04_customer_retention.md`](04_customer_retention.md) |
+| 1. Customer segment profitability | [`01_segment_profitability.md`](01_segment_profitability.md) |
+| 2. Revenue concentration | [`02_revenue_concentration.md`](02_revenue_concentration.md) |
+| 3. Customer lifecycle and retention | [`03_customer_retention.md`](03_customer_retention.md) |
+| 4. Revenue and margin trends | [`04_revenue_margin_trends.md`](04_revenue_margin_trends.md) |
 | Final strategic synthesis | [`05_strategic_synthesis.md`](05_strategic_synthesis.md) |
 
 The approved project scope is in [`../CASE_STUDY_QUESTIONS.md`](../CASE_STUDY_QUESTIONS.md).
@@ -32,7 +32,9 @@ After building the final SQLite database from the repository root:
 
 ```bash
 python scripts/analyze_q1.py
-python scripts/analyze_q2_q4.py
+python scripts/analyze_q2.py
+python scripts/analyze_q3.py
+python scripts/analyze_q4.py
 python scripts/build_business_report.py
 ```
 

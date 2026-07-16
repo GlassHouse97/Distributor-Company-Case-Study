@@ -1,0 +1,69 @@
+{
+  "reporting_window": {
+    "first_period": "1801",
+    "last_period": "2412",
+    "months": 84
+  },
+  "total_revenue_at_risk": 23046734.36,
+  "revenue_at_risk_pct_of_2024_revenue": 17.596100649407695,
+  "top_risk_segment": "Independent Retail Accounts",
+  "top_risk_segment_share_pct": 42.71,
+  "priority_customer_count": 100,
+  "buckets": [
+    {
+      "churn_risk_bucket": "Active (0-3 months)",
+      "customer_count": 1678,
+      "customer_pct": 51.95,
+      "baseline_revenue": 130224621.42,
+      "revenue_at_risk": 0.0,
+      "revenue_at_risk_share_pct": 0.0,
+      "revenue_at_risk_pct_of_2024_revenue": 0.0,
+      "minimum_months_inactive": 0.0,
+      "maximum_months_inactive": 3.0
+    },
+    {
+      "churn_risk_bucket": "Watch (4-6 months)",
+      "customer_count": 98,
+      "customer_pct": 3.03,
+      "baseline_revenue": 1490657.06,
+      "revenue_at_risk": 1490657.06,
+      "revenue_at_risk_share_pct": 6.47,
+      "revenue_at_risk_pct_of_2024_revenue": 1.14,
+      "minimum_months_inactive": 4.0,
+      "maximum_months_inactive": 6.0
+    },
+    {
+      "churn_risk_bucket": "At Risk (7-12 months)",
+      "customer_count": 165,
+      "customer_pct": 5.11,
+      "baseline_revenue": 2595480.24,
+      "revenue_at_risk": 2595480.24,
+      "revenue_at_risk_share_pct": 11.26,
+      "revenue_at_risk_pct_of_2024_revenue": 1.98,
+      "minimum_months_inactive": 7.0,
+      "maximum_months_inactive": 12.0
+    },
+    {
+      "churn_risk_bucket": "Dormant (13+ months)",
+      "customer_count": 1268,
+      "customer_pct": 39.26,
+      "baseline_revenue": 18960597.06,
+      "revenue_at_risk": 18960597.06,
+      "revenue_at_risk_share_pct": 82.27,
+      "revenue_at_risk_pct_of_2024_revenue": 14.48,
+      "minimum_months_inactive": 13.0,
+      "maximum_months_inactive": 83.0
+    },
+    {
+      "churn_risk_bucket": "No Positive Sales",
+      "customer_count": 21,
+      "customer_pct": 0.65,
+      "baseline_revenue": 0.0,
+      "revenue_at_risk": 0.0,
+      "revenue_at_risk_share_pct": 0.0,
+      "revenue_at_risk_pct_of_2024_revenue": 0.0,
+      "minimum_months_inactive": null,
+      "maximum_months_inactive": null
+    }
+  ]
+}

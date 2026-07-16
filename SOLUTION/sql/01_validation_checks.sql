@@ -1,83 +1,56 @@
 -- Question 1 validation checks.
--- These checks reconcile the 2018-2024 complete-year reporting window back to
--- the final transaction table without removing returns or adjustments.
 
-WITH scoped_transactions AS (
+WITH scoped AS (
     SELECT *
     FROM total_sales
     WHERE period BETWEEN '1801' AND '2412'
 ),
-annual_totals AS (
+segments AS (
     SELECT
-        per_year,
-        COUNT(DISTINCT period) AS month_count,
+        transaction_customer_class AS customer_class,
         SUM(sales) AS revenue,
-        SUM(cost) AS cost,
         SUM(gross_profit) AS gross_profit
-    FROM scoped_transactions
-    GROUP BY per_year
+    FROM scoped
+    GROUP BY 1
 ),
 checks AS (
-    SELECT
-        'complete_year_count' AS check_name,
-        CAST(COUNT(*) AS TEXT) AS actual_value,
-        '7' AS expected_value,
-        CASE WHEN COUNT(*) = 7 THEN 'PASS' ELSE 'FAIL' END AS status
-    FROM annual_totals
+    SELECT 'active_segment_count' AS check_name,
+           CAST(COUNT(*) AS TEXT) AS actual_value,
+           '64' AS expected_value,
+           CASE WHEN COUNT(*) = 64 THEN 'PASS' ELSE 'FAIL' END AS status
+    FROM segments
 
     UNION ALL
 
-    SELECT
-        'complete_month_count',
-        CAST(COUNT(DISTINCT period) AS TEXT),
-        '84',
-        CASE WHEN COUNT(DISTINCT period) = 84 THEN 'PASS' ELSE 'FAIL' END
-    FROM scoped_transactions
+    SELECT 'segment_revenue_reconciliation',
+           printf('%.2f', SUM(revenue) - (SELECT SUM(sales) FROM scoped)),
+           '0.00',
+           CASE WHEN ABS(SUM(revenue) - (SELECT SUM(sales) FROM scoped)) < 0.01 THEN 'PASS' ELSE 'FAIL' END
+    FROM segments
 
     UNION ALL
 
-    SELECT
-        'transaction_row_count',
-        CAST(COUNT(*) AS TEXT),
-        '3714620',
-        CASE WHEN COUNT(*) = 3714620 THEN 'PASS' ELSE 'FAIL' END
-    FROM scoped_transactions
+    SELECT 'segment_gross_profit_reconciliation',
+           printf('%.2f', SUM(gross_profit) - (SELECT SUM(gross_profit) FROM scoped)),
+           '0.00',
+           CASE WHEN ABS(SUM(gross_profit) - (SELECT SUM(gross_profit) FROM scoped)) < 0.01 THEN 'PASS' ELSE 'FAIL' END
+    FROM segments
 
     UNION ALL
 
-    SELECT
-        'gross_profit_formula_difference',
-        printf('%.6f', SUM(sales - cost) - SUM(gross_profit)),
-        '0.000000',
-        CASE
-            WHEN ABS(SUM(sales - cost) - SUM(gross_profit)) < 0.01
-            THEN 'PASS'
-            ELSE 'FAIL'
-        END
-    FROM scoped_transactions
+    SELECT 'unmapped_transaction_class_rows',
+           CAST(SUM(is_unmapped_customer_class) AS TEXT),
+           '0',
+           CASE WHEN SUM(is_unmapped_customer_class) = 0 THEN 'PASS' ELSE 'FAIL' END
+    FROM scoped
 
     UNION ALL
 
-    SELECT
-        'years_with_12_months',
-        CAST(SUM(CASE WHEN month_count = 12 THEN 1 ELSE 0 END) AS TEXT),
-        '7',
-        CASE
-            WHEN SUM(CASE WHEN month_count = 12 THEN 1 ELSE 0 END) = 7
-            THEN 'PASS'
-            ELSE 'FAIL'
-        END
-    FROM annual_totals
-
-    UNION ALL
-
-    SELECT
-        'partial_2017_rows_excluded',
-        CAST(COUNT(*) AS TEXT),
-        '4',
-        CASE WHEN COUNT(*) = 4 THEN 'PASS' ELSE 'FAIL' END
-    FROM total_sales
-    WHERE period < '1801'
+    SELECT 'complete_reporting_months',
+           CAST(COUNT(DISTINCT period) AS TEXT),
+           '84',
+           CASE WHEN COUNT(DISTINCT period) = 84 THEN 'PASS' ELSE 'FAIL' END
+    FROM scoped
 )
 SELECT check_name, actual_value, expected_value, status
 FROM checks

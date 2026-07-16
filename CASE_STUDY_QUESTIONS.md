@@ -1,69 +1,40 @@
 # Revenue Quality & Customer Profitability Case Study
 
-## Final Case Study Question Sheet
+## Final Case Study Questions
 
-This document defines the official scope of the Distributor Company Case Study. It is aligned with the GitHub README and replaces the previous seven-question prompt as the project's source of truth.
+This file defines the official scope of the project. The questions move from focused customer analysis to the broader financial trend, then close with one combined recommendation.
 
 ## Business Context
 
-The company has produced steady top-line revenue growth across multiple years. Leadership is not only concerned with how much revenue is growing, but whether that growth is profitable, durable, and appropriately diversified.
+The company has grown over several years. Leadership wants to know where that growth is coming from, whether the customer base is overly concentrated, which inactive customers may be worth contacting, and whether sales growth is producing more gross profit.
 
-The case study evaluates revenue quality through four executive questions and a final strategic synthesis.
+## Reporting Rules
 
-## Reporting Standard
-
-- Use `Period` as the official recognized-revenue month for financial reporting.
-- Interpret `Period` as `YYMM`, such as `2201` for January 2022.
+- Use `Period` as the official month for financial reporting.
+- Read `Period` as `YYMM`; for example, `2201` means January 2022.
 - Use `InvoiceDate` only when transaction timing is specifically relevant.
 - Calculate gross profit as `SUM(Sales) - SUM(Cost)`.
-- Calculate gross margin as `gross_profit / total_revenue` at the aggregate level.
-- Document all filters, exclusions, risk thresholds, and data-quality assumptions in the solution.
+- Calculate gross margin as total gross profit divided by total revenue.
+- Keep returns, credits, and other documented edge cases in the analysis unless a question states otherwise.
+- Explain all filters, thresholds, exclusions, and assumptions in the answer.
 
-## Required Deliverables
+## What Each Answer Must Include
 
-Each of the four analyses should include:
+1. The SQL used to answer the question.
+2. A compact result table with the main measures.
+3. A chart when it makes the result easier to understand.
+4. A direct written answer in plain language.
+5. A short validation note covering important assumptions and reconciliation checks.
 
-1. A clearly documented SQL query.
-2. A concise result table containing the requested measures.
-3. At least one visualization when a chart materially improves understanding.
-4. A written interpretation that answers the executive question.
-5. A short validation note describing important assumptions or reconciliation checks.
+## Question 1: Customer Segment Profitability
 
-## Question 1: Revenue and Margin Trend Analysis
+### Main Question
 
-### Executive Question
+Which customer segments bring in the most revenue and gross profit, and which segments earn stronger or weaker margins?
 
-How has recognized revenue and gross margin trended over time, and is revenue growth translating into sustainable profit growth?
+### Analysis
 
-### Required Analysis
-
-Aggregate financial performance by recognized `Period`. Evaluate the direction and rate of change in revenue, cost, gross profit, and gross margin. Include annual rollups or year-over-year comparisons where they improve the interpretation.
-
-### Minimum Output
-
-- `Period`
-- `total_revenue`
-- `total_cost`
-- `gross_profit`
-- `gross_margin_pct`
-
-### Interpretation Prompts
-
-- Is recognized revenue growing, declining, or remaining stable?
-- Is gross profit growing at the same rate as revenue?
-- Are margins expanding, compressing, or remaining stable?
-- Are there meaningful seasonal patterns or reporting-period anomalies?
-- Does the growth pattern appear profitable and sustainable?
-
-## Question 2: Customer Segment Profitability
-
-### Executive Question
-
-Which customer segments drive profitable growth, and are the highest-revenue segments also the highest-margin segments?
-
-### Required Analysis
-
-Aggregate revenue, cost, gross profit, and gross margin by customer segment. Compare segment scale with segment profitability so that high-volume segments are not automatically treated as the most attractive segments.
+Summarize revenue, cost, gross profit, and gross margin by customer segment. Compare each segment's share of revenue with its share of gross profit so that large segments are not automatically treated as the best-performing segments.
 
 ### Minimum Output
 
@@ -75,25 +46,24 @@ Aggregate revenue, cost, gross profit, and gross margin by customer segment. Com
 - `revenue_share_pct`
 - `gross_profit_share_pct`
 
-### Interpretation Prompts
+### Questions to Answer
 
 - Which segments generate the most revenue and gross profit?
-- Which segments produce the strongest and weakest margins?
-- Are any segments revenue-heavy but margin-light?
-- Which segments appear to offer the strongest profitable-growth opportunity?
-- Which segments should be protected, improved, expanded, or monitored?
+- Which large segments earn relatively strong or weak margins?
+- Which segments contribute more profit than their revenue share would suggest?
+- Which segments should the company protect, improve, expand, or monitor?
 
-## Question 3: Revenue Concentration Risk
+## Question 2: Revenue Concentration
 
-### Executive Question
+### Main Question
 
-Is the business overly dependent on a small group of customers, and how does concentration differ at the customer and segment levels?
+Does the company depend too heavily on a small number of customers or customer segments?
 
-### Required Analysis
+### Analysis
 
-Rank customers by recognized revenue and calculate revenue share and cumulative revenue share. Determine how many customers account for major thresholds such as 50%, 80%, and 90% of revenue. Compare customer-level concentration with segment-level concentration.
+Rank customers by recognized revenue and calculate revenue share and cumulative revenue share. Measure how many customers account for 50%, 80%, and 90% of revenue, then compare customer concentration with segment concentration.
 
-### Minimum Customer-Level Output
+### Customer-Level Output
 
 - `CustomerNumber`
 - `total_revenue`
@@ -101,31 +71,30 @@ Rank customers by recognized revenue and calculate revenue share and cumulative 
 - `cumulative_revenue_pct`
 - `revenue_rank`
 
-### Minimum Concentration Summary
+### Concentration Summary
 
-- Share of revenue generated by the top 1, 10, and 100 customers
-- Number and percentage of customers required to reach 50%, 80%, and 90% of revenue
+- Revenue share from the top 1, 10, and 100 customers
+- Customers needed to reach 50%, 80%, and 90% of revenue
 - Revenue share by customer segment
 
-### Interpretation Prompts
+### Questions to Answer
 
-- Does the customer portfolio follow an approximate Pareto distribution?
-- How much revenue would be affected by the loss of the largest accounts?
-- Is concentration risk more pronounced at the customer or segment level?
-- Does the long tail of smaller accounts create opportunity, operating complexity, or both?
-- What concentration risks should leadership monitor?
+- How much revenue would be affected by losing one of the largest customers?
+- Is concentration more significant at the customer or segment level?
+- Does the long tail of smaller customers add useful diversification, extra operating work, or both?
+- Which concentration measures should leadership continue to watch?
 
-## Question 4: Customer Lifecycle and Retention Risk
+## Question 3: Customer Lifecycle and Retention Risk
 
-### Executive Question
+### Main Question
 
-Which customers appear inactive or at risk of churn, and how much revenue is genuinely associated with that risk?
+Which customers appear inactive, and how much recent historical revenue is connected to those customers?
 
-### Required Analysis
+### Analysis
 
-Use recognized `Period` activity to determine each customer's most recent active month. Define transparent inactivity thresholds relative to the latest recognized period in the dataset. Quantify customer counts and an explicitly defined revenue-at-risk measure by risk category and customer segment.
+Use recognized `Period` activity to find each customer's latest positive-sale month. Define clear inactivity ranges relative to the latest period in the data. Count customers in each group and calculate a clearly defined historical revenue baseline for non-active customers.
 
-### Minimum Customer-Level Output
+### Customer-Level Output
 
 - `CustomerNumber`
 - `CustomerClassDescription`
@@ -134,48 +103,71 @@ Use recognized `Period` activity to determine each customer's most recent active
 - `churn_risk_bucket`
 - `revenue_at_risk`
 
-### Minimum Retention Summary
+### Retention Summary
 
-- Customer count by churn-risk bucket
-- Percentage of customers by churn-risk bucket
-- Revenue-at-risk amount and percentage by bucket
-- Churn-risk distribution by customer segment
+- Customer count and percentage by lifecycle group
+- Historical revenue baseline by lifecycle group
+- Lifecycle results by customer segment
+- A prioritized outreach list
 
-### Interpretation Prompts
+### Questions to Answer
 
-- Which customers and segments show the greatest retention risk?
-- Is risk concentrated among strategically important or low-value accounts?
-- Does the chosen revenue-at-risk measure represent historical revenue, recent revenue, or expected future revenue?
-- Which customers warrant immediate outreach?
-- What limitations prevent inactivity from being treated as confirmed churn?
+- Which customers and segments show the most inactivity?
+- Is the inactive population mostly high-value or low-value customers?
+- Which customers are recent enough to justify immediate outreach?
+- What prevents inactivity from being treated as confirmed churn?
+
+## Question 4: Revenue and Margin Trends
+
+### Main Question
+
+Are revenue and gross profit growing over time, and is the company keeping more gross profit from each dollar of sales?
+
+### Analysis
+
+Summarize performance by recognized `Period`, then roll it up by year. Compare revenue, cost, gross profit, and gross margin over time. Review year-over-year growth, monthly changes, and seasonality before deciding whether the overall pattern looks healthy.
+
+### Minimum Output
+
+- `Period`
+- `total_revenue`
+- `total_cost`
+- `gross_profit`
+- `gross_margin_pct`
+
+### Questions to Answer
+
+- Is revenue growing, declining, or staying flat?
+- Is gross profit growing faster or slower than revenue?
+- Is gross margin improving or weakening?
+- Are there seasonal peaks or unusual reporting periods?
+- Does the historical pattern look healthy, and what can the data not tell us about the future?
 
 ## Final Strategic Synthesis
 
-### Executive Question
+### Main Question
 
-How should strategic focus shift to improve the quality of revenue?
+What should leadership focus on next based on all four analyses?
 
 ### Required Synthesis
 
-Combine the four analyses into one executive recommendation. The synthesis should explain how growth, profitability, concentration, and retention interact rather than presenting them as unrelated findings.
+Connect the segment, concentration, retention, and financial-trend findings into one practical recommendation. Do not present the four answers as unrelated observations.
 
-### Final Deliverable
+### Final Output
 
 - Three to five evidence-backed findings
-- Three prioritized business recommendations
-- The expected business benefit of each recommendation
-- Important risks, limitations, and monitoring metrics
-- A concise conclusion suitable for a hiring manager or executive reader
+- Three prioritized recommendations
+- The expected benefit of each recommendation
+- Important limitations and measures to keep watching
+- A short conclusion suitable for a hiring manager or business reader
 
-## Scope Boundaries
+## Outside the Current Scope
 
-The following topics are outside the initial case-study scope unless they directly support one of the four executive questions:
+The following topics are possible future extensions, but they are not required for this version of the case study:
 
-- Product-level assortment optimization
-- Sales-representative performance scoring
-- Geographic territory optimization
+- Product assortment optimization
+- Sales-representative scoring
+- Geographic territory design
 - Demand forecasting
 - Customer lifetime value modeling
 - Predictive churn modeling
-
-These can be considered future extensions after the core case study is complete.

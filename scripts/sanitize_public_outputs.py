@@ -1,21 +1,61 @@
-"""Replace source customer numbers with stable public labels in compact outputs."""
+"""Create stable public customer labels without exposing source customer numbers."""
 
 from __future__ import annotations
 
 import csv
 import os
 import re
+import sqlite3
 from pathlib import Path
+from typing import Iterable
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "SOLUTION" / "outputs"
+DEFAULT_DATABASE = PROJECT_ROOT / "data" / "processed" / "distributor_case_study.sqlite"
 CUSTOMER_OUTPUTS = [
-    "03_customer_concentration.csv",
-    "04_customer_lifecycle.csv",
-    "04_priority_outreach.csv",
+    "02_customer_concentration.csv",
+    "03_customer_lifecycle.csv",
+    "03_priority_outreach.csv",
 ]
 PUBLIC_ID_PATTERN = re.compile(r"^CUSTOMER_\d+$")
+
+
+def build_public_id_map(connection: sqlite3.Connection) -> dict[str, str]:
+    """Map the complete customer universe to stable sequential public labels."""
+    customer_numbers = [
+        str(row[0])
+        for row in connection.execute(
+            """
+            SELECT DISTINCT customer_number
+            FROM total_sales
+            WHERE customer_number IS NOT NULL
+            ORDER BY customer_number
+            """
+        )
+    ]
+    width = max(4, len(str(len(customer_numbers))))
+    return {
+        customer_number: f"CUSTOMER_{index:0{width}d}"
+        for index, customer_number in enumerate(customer_numbers, start=1)
+    }
+
+
+def apply_public_labels(values: Iterable[object], mapping: dict[str, str]) -> list[str]:
+    """Return public labels for a customer-number series and reject missing mappings."""
+    labels: list[str] = []
+    missing: list[str] = []
+    for value in values:
+        key = str(value)
+        label = mapping.get(key)
+        if label is None:
+            missing.append(key)
+        else:
+            labels.append(label)
+    if missing:
+        sample = ", ".join(missing[:5])
+        raise ValueError(f"Missing public labels for {len(missing)} customer IDs: {sample}")
+    return labels
 
 
 def read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -37,35 +77,40 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> 
             temp_path.unlink()
 
 
-def sanitize_outputs(output_dir: Path = DEFAULT_OUTPUT_DIR) -> int:
-    datasets: list[tuple[Path, list[str], list[dict[str, str]]]] = []
-    identifiers: list[str] = []
+def sanitize_outputs(
+    output_dir: Path = DEFAULT_OUTPUT_DIR,
+    database_path: Path = DEFAULT_DATABASE,
+) -> int:
+    """Apply the database-backed label map to customer outputs that currently exist."""
+    with sqlite3.connect(database_path) as connection:
+        mapping = build_public_id_map(connection)
+
+    updated_rows = 0
+    existing_files = 0
     for file_name in CUSTOMER_OUTPUTS:
         path = output_dir / file_name
+        if not path.exists():
+            continue
+        existing_files += 1
         fieldnames, rows = read_csv(path)
         if "customer_number" not in fieldnames:
             raise ValueError(f"Missing customer_number in {path}")
-        datasets.append((path, fieldnames, rows))
-        identifiers.extend(row["customer_number"] for row in rows)
-
-    unique_identifiers = list(dict.fromkeys(identifiers))
-    if all(PUBLIC_ID_PATTERN.fullmatch(value) for value in unique_identifiers):
-        return len(unique_identifiers)
-    if any(PUBLIC_ID_PATTERN.fullmatch(value) for value in unique_identifiers):
-        raise ValueError("Public outputs contain a mix of source and anonymized customer IDs")
-
-    width = max(4, len(str(len(unique_identifiers))))
-    mapping = {
-        value: f"CUSTOMER_{index:0{width}d}"
-        for index, value in enumerate(unique_identifiers, start=1)
-    }
-    for path, fieldnames, rows in datasets:
-        for row in rows:
-            row["customer_number"] = mapping[row["customer_number"]]
+        source_values = [row["customer_number"] for row in rows]
+        if all(PUBLIC_ID_PATTERN.fullmatch(value) for value in source_values):
+            continue
+        if any(PUBLIC_ID_PATTERN.fullmatch(value) for value in source_values):
+            raise ValueError(f"Mixed source and public customer IDs in {path}")
+        labels = apply_public_labels(source_values, mapping)
+        for row, label in zip(rows, labels):
+            row["customer_number"] = label
         write_csv(path, fieldnames, rows)
-    return len(mapping)
+        updated_rows += len(rows)
+
+    if existing_files == 0:
+        raise FileNotFoundError("No customer-level analysis outputs were found")
+    return updated_rows
 
 
 if __name__ == "__main__":
     count = sanitize_outputs()
-    print(f"Anonymized {count:,} customer identifiers")
+    print(f"Applied public labels to {count:,} customer rows")

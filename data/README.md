@@ -77,7 +77,9 @@ The build creates `data/processed/distributor_case_study.sqlite`. Run your own S
 
 ```bash
 python scripts/analyze_q1.py
-python scripts/analyze_q2_q4.py
+python scripts/analyze_q2.py
+python scripts/analyze_q3.py
+python scripts/analyze_q4.py
 ```
 
 See the [complete data pipeline](../docs/DATA_PIPELINE.md) and [data dictionary](../docs/DATA_DICTIONARY.md) for field definitions and modeling rules.

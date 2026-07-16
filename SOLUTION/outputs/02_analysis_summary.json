@@ -1,0 +1,22 @@
+{
+  "total_customers": 3230,
+  "positive_revenue_customers": 3192,
+  "zero_revenue_customers": 17,
+  "negative_revenue_customers": 21,
+  "top_1_customer_share_pct": 1.1305,
+  "top_10_customer_share_pct": 7.0866,
+  "top_100_customer_share_pct": 33.4092,
+  "customers_to_50_pct": 205,
+  "customer_pct_to_50_revenue": 6.35,
+  "customers_to_80_pct": 599,
+  "customer_pct_to_80_revenue": 18.54,
+  "customers_to_90_pct": 927,
+  "customer_pct_to_90_revenue": 28.7,
+  "customer_hhi": 19.36,
+  "active_segments": 64,
+  "top_1_segment_share_pct": 48.75,
+  "top_3_segment_share_pct": 68.82,
+  "top_5_segment_share_pct": 75.91,
+  "segments_to_80_pct": 7,
+  "segment_hhi": 2662.59
+}

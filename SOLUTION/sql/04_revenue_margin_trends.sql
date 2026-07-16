@@ -1,4 +1,4 @@
--- Question 1: annual recognized-revenue and gross-margin trends.
+-- Question 4: annual recognized-revenue and gross-margin trends.
 -- Period is the reporting authority. The four adjustment rows in Period 1712
 -- are retained in total_sales but excluded here because 2017 is not a complete
 -- reporting year. The analytical window contains all 84 months from 2018-2024.

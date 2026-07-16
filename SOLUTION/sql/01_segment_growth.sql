@@ -1,4 +1,4 @@
--- Question 2: segment contribution to growth from 2018 to 2024.
+-- Question 1: segment contribution to growth from 2018 to 2024.
 -- Growth can reflect both customer activity and historical reclassification.
 
 WITH segment_year AS (

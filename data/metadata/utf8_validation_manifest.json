@@ -122,59 +122,7 @@
       "sha256_after": "c9ac7e195c9006c878e72a85bfb5cc151f128f3d18a5c5a8e2d0d0c94cb5f19e"
     },
     {
-      "path": "SOLUTION/outputs/01_annual_revenue_margin.csv",
-      "detected_source_encoding": "utf-8",
-      "converted": false,
-      "strict_utf8_after_run": true,
-      "utf8_bom_after_run": false,
-      "line_count_before": 8,
-      "line_count_after": 8,
-      "size_before": 673,
-      "size_after": 673,
-      "sha256_before": "d4080d88f0089fde963bd1f82bb9a2b6f018a59c8ed15915bbbd4c407e9a0f90",
-      "sha256_after": "d4080d88f0089fde963bd1f82bb9a2b6f018a59c8ed15915bbbd4c407e9a0f90"
-    },
-    {
-      "path": "SOLUTION/outputs/01_monthly_revenue_margin.csv",
-      "detected_source_encoding": "utf-8",
-      "converted": false,
-      "strict_utf8_after_run": true,
-      "utf8_bom_after_run": false,
-      "line_count_before": 85,
-      "line_count_after": 85,
-      "size_before": 7608,
-      "size_after": 7608,
-      "sha256_before": "a0d6ef6676ee545700fc8e75ba2fed792abb27b29bd8bbe5a1867516eaad9cdb",
-      "sha256_after": "a0d6ef6676ee545700fc8e75ba2fed792abb27b29bd8bbe5a1867516eaad9cdb"
-    },
-    {
-      "path": "SOLUTION/outputs/01_revenue_seasonality.csv",
-      "detected_source_encoding": "utf-8",
-      "converted": false,
-      "strict_utf8_after_run": true,
-      "utf8_bom_after_run": false,
-      "line_count_before": 13,
-      "line_count_after": 13,
-      "size_before": 656,
-      "size_after": 656,
-      "sha256_before": "d37e023d28f2e253a1f410578e283bcdd69d46adfbb343976279fff9b914fcb5",
-      "sha256_after": "d37e023d28f2e253a1f410578e283bcdd69d46adfbb343976279fff9b914fcb5"
-    },
-    {
-      "path": "SOLUTION/outputs/01_validation_checks.csv",
-      "detected_source_encoding": "utf-8",
-      "converted": false,
-      "strict_utf8_after_run": true,
-      "utf8_bom_after_run": false,
-      "line_count_before": 7,
-      "line_count_after": 7,
-      "size_before": 278,
-      "size_after": 278,
-      "sha256_before": "9ce166162fb222ea8b3a503647190259862342425a4b561b2ec3514e44367610",
-      "sha256_after": "9ce166162fb222ea8b3a503647190259862342425a4b561b2ec3514e44367610"
-    },
-    {
-      "path": "SOLUTION/outputs/02_segment_growth.csv",
+      "path": "SOLUTION/outputs/01_segment_growth.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -187,7 +135,7 @@
       "sha256_after": "334c60110589f233e1eb71295c9494544bf1059312ede89f5254fa161c298f77"
     },
     {
-      "path": "SOLUTION/outputs/02_segment_profitability.csv",
+      "path": "SOLUTION/outputs/01_segment_profitability.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -200,7 +148,7 @@
       "sha256_after": "4cc8628adf7c744177821299be71d88a017529b608e84e731431ace980a8154e"
     },
     {
-      "path": "SOLUTION/outputs/02_validation_checks.csv",
+      "path": "SOLUTION/outputs/01_validation_checks.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -213,7 +161,7 @@
       "sha256_after": "fa1859be094bbef9e4eb19b0424ea3c5af2227226bc9b2030810c8179cbb9531"
     },
     {
-      "path": "SOLUTION/outputs/03_concentration_summary.csv",
+      "path": "SOLUTION/outputs/02_concentration_summary.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -226,20 +174,20 @@
       "sha256_after": "1d4bf7020a529595f30087d77c2a368808d10297484fa3a302f920f082870730"
     },
     {
-      "path": "SOLUTION/outputs/03_customer_concentration.csv",
+      "path": "SOLUTION/outputs/02_customer_concentration.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
       "utf8_bom_after_run": false,
       "line_count_before": 3231,
       "line_count_after": 3231,
-      "size_before": 245001,
-      "size_after": 245001,
-      "sha256_before": "9ad5839d4a9c5360ebeca3ec23d75285c3cccebcc21740ffb60ecda665eb205e",
-      "sha256_after": "9ad5839d4a9c5360ebeca3ec23d75285c3cccebcc21740ffb60ecda665eb205e"
+      "size_before": 248232,
+      "size_after": 248232,
+      "sha256_before": "ef2d6f6ece1cc05ece76ad31565795f431b481676880d908fe62a0f467465998",
+      "sha256_after": "ef2d6f6ece1cc05ece76ad31565795f431b481676880d908fe62a0f467465998"
     },
     {
-      "path": "SOLUTION/outputs/03_segment_concentration.csv",
+      "path": "SOLUTION/outputs/02_segment_concentration.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -252,7 +200,7 @@
       "sha256_after": "e153a75fe2fcd98d67cf1fb5bda9ce0d40763026241cb72280ef14e9c85a3be2"
     },
     {
-      "path": "SOLUTION/outputs/03_validation_checks.csv",
+      "path": "SOLUTION/outputs/02_validation_checks.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -265,33 +213,33 @@
       "sha256_after": "1b30e00b7ff491ce3e0c65638c2fb6861808343c30be9635d4e5156a1e992606"
     },
     {
-      "path": "SOLUTION/outputs/04_customer_lifecycle.csv",
+      "path": "SOLUTION/outputs/03_customer_lifecycle.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
       "utf8_bom_after_run": false,
       "line_count_before": 3231,
       "line_count_after": 3231,
-      "size_before": 299286,
-      "size_after": 299286,
-      "sha256_before": "6b5d6d1b1ee92c09f8e0be54e4cd231322da1e249434421821eac37479f8c632",
-      "sha256_after": "6b5d6d1b1ee92c09f8e0be54e4cd231322da1e249434421821eac37479f8c632"
+      "size_before": 302517,
+      "size_after": 302517,
+      "sha256_before": "47017cbe3980931cfbc33f7592a8960eb969ffe9afd6fd50a9ecbe483142ec39",
+      "sha256_after": "47017cbe3980931cfbc33f7592a8960eb969ffe9afd6fd50a9ecbe483142ec39"
     },
     {
-      "path": "SOLUTION/outputs/04_priority_outreach.csv",
+      "path": "SOLUTION/outputs/03_priority_outreach.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
       "utf8_bom_after_run": false,
       "line_count_before": 101,
       "line_count_after": 101,
-      "size_before": 6871,
-      "size_after": 6871,
-      "sha256_before": "ab92fd8b6bf443566be5752f8677491dea9cf8c1d7ea451d0b222e3462e88e7c",
-      "sha256_after": "ab92fd8b6bf443566be5752f8677491dea9cf8c1d7ea451d0b222e3462e88e7c"
+      "size_before": 6972,
+      "size_after": 6972,
+      "sha256_before": "a6f39dd29071918ce5e1bf1da3fb6ea703aa45ede09dcbf746d52bf903b36481",
+      "sha256_after": "a6f39dd29071918ce5e1bf1da3fb6ea703aa45ede09dcbf746d52bf903b36481"
     },
     {
-      "path": "SOLUTION/outputs/04_retention_by_segment.csv",
+      "path": "SOLUTION/outputs/03_retention_by_segment.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -304,7 +252,7 @@
       "sha256_after": "7f0bacfdb8f81f06ff23733fbd29af998f0a820bdc7aa490f9cd1150764fb90b"
     },
     {
-      "path": "SOLUTION/outputs/04_retention_summary.csv",
+      "path": "SOLUTION/outputs/03_retention_summary.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -317,7 +265,7 @@
       "sha256_after": "c541e5c7ce18f67473f2e90ff58807aad0b94ab491bfbc58ae09819fbb51ff65"
     },
     {
-      "path": "SOLUTION/outputs/04_validation_checks.csv",
+      "path": "SOLUTION/outputs/03_validation_checks.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -328,6 +276,58 @@
       "size_after": 298,
       "sha256_before": "116d084bedc2f70bb8cc6c0f21529d215425fc530f5186be4dbe117222f92447",
       "sha256_after": "116d084bedc2f70bb8cc6c0f21529d215425fc530f5186be4dbe117222f92447"
+    },
+    {
+      "path": "SOLUTION/outputs/04_annual_revenue_margin.csv",
+      "detected_source_encoding": "utf-8",
+      "converted": false,
+      "strict_utf8_after_run": true,
+      "utf8_bom_after_run": false,
+      "line_count_before": 8,
+      "line_count_after": 8,
+      "size_before": 673,
+      "size_after": 673,
+      "sha256_before": "d4080d88f0089fde963bd1f82bb9a2b6f018a59c8ed15915bbbd4c407e9a0f90",
+      "sha256_after": "d4080d88f0089fde963bd1f82bb9a2b6f018a59c8ed15915bbbd4c407e9a0f90"
+    },
+    {
+      "path": "SOLUTION/outputs/04_monthly_revenue_margin.csv",
+      "detected_source_encoding": "utf-8",
+      "converted": false,
+      "strict_utf8_after_run": true,
+      "utf8_bom_after_run": false,
+      "line_count_before": 85,
+      "line_count_after": 85,
+      "size_before": 7608,
+      "size_after": 7608,
+      "sha256_before": "a0d6ef6676ee545700fc8e75ba2fed792abb27b29bd8bbe5a1867516eaad9cdb",
+      "sha256_after": "a0d6ef6676ee545700fc8e75ba2fed792abb27b29bd8bbe5a1867516eaad9cdb"
+    },
+    {
+      "path": "SOLUTION/outputs/04_revenue_seasonality.csv",
+      "detected_source_encoding": "utf-8",
+      "converted": false,
+      "strict_utf8_after_run": true,
+      "utf8_bom_after_run": false,
+      "line_count_before": 13,
+      "line_count_after": 13,
+      "size_before": 656,
+      "size_after": 656,
+      "sha256_before": "d37e023d28f2e253a1f410578e283bcdd69d46adfbb343976279fff9b914fcb5",
+      "sha256_after": "d37e023d28f2e253a1f410578e283bcdd69d46adfbb343976279fff9b914fcb5"
+    },
+    {
+      "path": "SOLUTION/outputs/04_validation_checks.csv",
+      "detected_source_encoding": "utf-8",
+      "converted": false,
+      "strict_utf8_after_run": true,
+      "utf8_bom_after_run": false,
+      "line_count_before": 7,
+      "line_count_after": 7,
+      "size_before": 278,
+      "size_after": 278,
+      "sha256_before": "9ce166162fb222ea8b3a503647190259862342425a4b561b2ec3514e44367610",
+      "sha256_after": "9ce166162fb222ea8b3a503647190259862342425a4b561b2ec3514e44367610"
     }
   ]
 }

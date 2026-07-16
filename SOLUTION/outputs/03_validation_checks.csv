@@ -1,6 +1,7 @@
 check_name,actual_value,expected_value,status
-customer_count,3230,3230,PASS
-customer_revenue_reconciliation,0.00,0.00,PASS
-final_cumulative_revenue_pct,100.0000,100.0000,PASS
-top_customer_below_two_pct,1.1305,<2.0000,PASS
-unique_customer_ranks,3230,3230,PASS
+active_revenue_at_risk,0.00,0.00,PASS
+bucket_customer_reconciliation,3230,3230,PASS
+latest_recognized_period,2412,2412,PASS
+lifecycle_customer_count,3230,3230,PASS
+no_positive_sales_customer_count,21,21,PASS
+nonnegative_revenue_at_risk,0,0,PASS

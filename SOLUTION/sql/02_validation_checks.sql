@@ -1,56 +1,60 @@
 -- Question 2 validation checks.
 
-WITH scoped AS (
-    SELECT *
+WITH customer_performance AS (
+    SELECT customer_number, SUM(sales) AS revenue
     FROM total_sales
     WHERE period BETWEEN '1801' AND '2412'
+    GROUP BY customer_number
 ),
-segments AS (
+ranked AS (
     SELECT
-        transaction_customer_class AS customer_class,
-        SUM(sales) AS revenue,
-        SUM(gross_profit) AS gross_profit
-    FROM scoped
-    GROUP BY 1
+        *,
+        ROW_NUMBER() OVER (ORDER BY revenue DESC, customer_number) AS revenue_rank,
+        SUM(revenue) OVER () AS portfolio_revenue,
+        SUM(revenue) OVER (
+            ORDER BY revenue DESC, customer_number
+            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+        ) AS cumulative_revenue
+    FROM customer_performance
 ),
 checks AS (
-    SELECT 'active_segment_count' AS check_name,
+    SELECT 'customer_count' AS check_name,
            CAST(COUNT(*) AS TEXT) AS actual_value,
-           '64' AS expected_value,
-           CASE WHEN COUNT(*) = 64 THEN 'PASS' ELSE 'FAIL' END AS status
-    FROM segments
+           '3230' AS expected_value,
+           CASE WHEN COUNT(*) = 3230 THEN 'PASS' ELSE 'FAIL' END AS status
+    FROM ranked
 
     UNION ALL
 
-    SELECT 'segment_revenue_reconciliation',
-           printf('%.2f', SUM(revenue) - (SELECT SUM(sales) FROM scoped)),
+    SELECT 'customer_revenue_reconciliation',
+           printf('%.2f', SUM(revenue) - MAX(portfolio_revenue)),
            '0.00',
-           CASE WHEN ABS(SUM(revenue) - (SELECT SUM(sales) FROM scoped)) < 0.01 THEN 'PASS' ELSE 'FAIL' END
-    FROM segments
+           CASE WHEN ABS(SUM(revenue) - MAX(portfolio_revenue)) < 0.01 THEN 'PASS' ELSE 'FAIL' END
+    FROM ranked
 
     UNION ALL
 
-    SELECT 'segment_gross_profit_reconciliation',
-           printf('%.2f', SUM(gross_profit) - (SELECT SUM(gross_profit) FROM scoped)),
-           '0.00',
-           CASE WHEN ABS(SUM(gross_profit) - (SELECT SUM(gross_profit) FROM scoped)) < 0.01 THEN 'PASS' ELSE 'FAIL' END
-    FROM segments
+    SELECT 'final_cumulative_revenue_pct',
+           printf('%.4f', 100.0 * MAX(CASE WHEN revenue_rank = 3230 THEN cumulative_revenue END) / MAX(portfolio_revenue)),
+           '100.0000',
+           CASE WHEN ABS(100.0 * MAX(CASE WHEN revenue_rank = 3230 THEN cumulative_revenue END) / MAX(portfolio_revenue) - 100.0) < 0.0001 THEN 'PASS' ELSE 'FAIL' END
+    FROM ranked
 
     UNION ALL
 
-    SELECT 'unmapped_transaction_class_rows',
-           CAST(SUM(is_unmapped_customer_class) AS TEXT),
-           '0',
-           CASE WHEN SUM(is_unmapped_customer_class) = 0 THEN 'PASS' ELSE 'FAIL' END
-    FROM scoped
+    SELECT 'unique_customer_ranks',
+           CAST(COUNT(DISTINCT revenue_rank) AS TEXT),
+           '3230',
+           CASE WHEN COUNT(DISTINCT revenue_rank) = 3230 THEN 'PASS' ELSE 'FAIL' END
+    FROM ranked
 
     UNION ALL
 
-    SELECT 'complete_reporting_months',
-           CAST(COUNT(DISTINCT period) AS TEXT),
-           '84',
-           CASE WHEN COUNT(DISTINCT period) = 84 THEN 'PASS' ELSE 'FAIL' END
-    FROM scoped
+    SELECT 'top_customer_below_two_pct',
+           printf('%.4f', 100.0 * MAX(CASE WHEN revenue_rank = 1 THEN revenue END) / MAX(portfolio_revenue)),
+           '<2.0000',
+           CASE WHEN 100.0 * MAX(CASE WHEN revenue_rank = 1 THEN revenue END) / MAX(portfolio_revenue) < 2.0 THEN 'PASS' ELSE 'FAIL' END
+    FROM ranked
 )
 SELECT check_name, actual_value, expected_value, status
 FROM checks

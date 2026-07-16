@@ -20,7 +20,7 @@ OUTPUTS = PROJECT_ROOT / "SOLUTION" / "outputs"
 VISUALS = PROJECT_ROOT / "SOLUTION" / "visualizations"
 SOLUTION_DIR = PROJECT_ROOT / "SOLUTION"
 REPORT_PATH = SOLUTION_DIR / "Distributor_Case_Study_Report.docx"
-Q1_PNG = VISUALS / "01_revenue_margin_trends.png"
+Q4_PNG = VISUALS / "04_revenue_margin_trends.png"
 
 NAVY = "17365D"
 BLUE = "2E74B5"
@@ -276,8 +276,8 @@ def font(size: int, bold=False):
     return ImageFont.load_default()
 
 
-def make_q1_chart():
-    annual = load_csv("01_annual_revenue_margin.csv")
+def make_q4_chart():
+    annual = load_csv("04_annual_revenue_margin.csv")
     width, height = 1600, 900
     image = Image.new("RGB", (width, height), "white")
     draw = ImageDraw.Draw(image)
@@ -335,7 +335,7 @@ def make_q1_chart():
     draw.line((1320, 157, 1355, 157), fill="#D9772A", width=5)
     draw.text((1367, 157), "Gross margin", font=small_font, fill="#20384A", anchor="lm")
     draw.text((70, 855), "Complete recognized reporting years; returns and adjustments retained.", font=small_font, fill="#607184")
-    image.save(Q1_PNG)
+    image.save(Q4_PNG)
 
 
 def add_heading(doc, text, level=1):
@@ -420,11 +420,11 @@ def configure_document(doc: Document):
 def build_report():
     SOLUTION_DIR.mkdir(exist_ok=True)
     VISUALS.mkdir(exist_ok=True)
-    make_q1_chart()
+    make_q4_chart()
 
-    annual = load_csv("01_annual_revenue_margin.csv")
-    segments = load_csv("02_segment_profitability.csv")
-    retention = load_csv("04_retention_summary.csv")
+    annual = load_csv("04_annual_revenue_margin.csv")
+    segments = load_csv("01_segment_profitability.csv")
+    retention = load_csv("03_retention_summary.csv")
 
     doc = Document()
     configure_document(doc)
@@ -453,7 +453,7 @@ def build_report():
     set_run_font(run, size=13.5, color=MUTED)
     add_callout(
         doc,
-        "Growth was profitable and customer-level diversification was strong. The next value opportunity is to defend the core segment, improve margin where scale is under-monetized, and prioritize retention by recoverable revenue.",
+        "The company has grown while improving gross profit and margin. The next priorities are to protect the largest customer segment, improve weaker margins in other large segments, and focus outreach on recently valuable inactive customers.",
     )
     note = doc.add_paragraph()
     note.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -465,11 +465,11 @@ def build_report():
     add_heading(doc, "Executive Summary", 1)
     add_body(
         doc,
-        "The company’s 2018-2024 growth was profitable and broadly diversified across individual customers. Recognized revenue increased every year, gross profit grew faster, and gross margin expanded. The main strategic exposures are concentrated at the customer-segment level and in a sizable dormant-account pool.",
+        "The company has a healthy financial history. Revenue increased every year from 2018 through 2024, gross profit grew faster than revenue, and gross margin improved. The company is not dependent on a few individual customers, but it does depend heavily on the Independent Retail segment.",
     )
     add_table(
         doc,
-        ["Validated measure", "Result"],
+        ["Final measure", "Result"],
         [
             ["2018-2024 revenue growth", "65.0% ($79.4M to $131.0M)"],
             ["2018-2024 gross-profit growth", "89.6% ($15.2M to $28.8M)"],
@@ -485,9 +485,9 @@ def build_report():
         doc,
         ["Priority", "Action", "Expected benefit"],
         [
-            ["1", "Protect Independent Retail while expanding high-margin segments", "Defend the main profit pool and improve diversification"],
-            ["2", "Launch a monthly value-based retention queue", "Prioritize recent, high-value risk and measure reactivation"],
-            ["3", "Review pricing and cost-to-serve in margin-light segments", "Convert existing scale into incremental gross profit"],
+            ["1", "Protect Independent Retail and test smaller high-margin segments", "Protect the largest source of profit and add other sources of growth"],
+            ["2", "Contact recent, high-value inactive customers first", "Use sales time on customers with the clearest recent value"],
+            ["3", "Review margins in large segments such as Wholesale Trade", "Add gross profit from business the company already has"],
         ],
         [900, 4230, 4230],
     )
@@ -497,46 +497,14 @@ def build_report():
     )
 
     doc.add_page_break()
-    add_heading(doc, "1. Revenue and Margin Trends", 1)
-    add_callout(doc, "Recognized revenue rose every year, and gross profit grew faster than revenue.")
+    add_heading(doc, "1. Customer Segment Profitability", 1)
+    add_callout(doc, "Independent Retail is the largest source of both revenue and gross profit.")
     add_picture(
         doc,
-        Q1_PNG,
-        "Stacked annual revenue bars show cost and gross profit from 2018 through 2024, with an accompanying gross-margin line rising from 19.15 percent to 22.01 percent.",
-    )
-    add_caption(doc, "Figure 1. Annual recognized revenue composition and gross-margin trend.")
-    annual_rows = []
-    for row in annual:
-        annual_rows.append(
-            [
-                row["per_year"],
-                f"${float(row['total_revenue']) / 1_000_000:.1f}M",
-                f"${float(row['gross_profit']) / 1_000_000:.1f}M",
-                f"{float(row['gross_margin_pct']):.2f}%",
-                "-" if not row["revenue_yoy_pct"] else f"{float(row['revenue_yoy_pct']):.2f}%",
-            ]
-        )
-    add_table(
-        doc,
-        ["Year", "Revenue", "Gross profit", "Margin", "Revenue YoY"],
-        annual_rows,
-        [900, 2200, 2200, 1800, 2260],
-        [WD_ALIGN_PARAGRAPH.CENTER] + [WD_ALIGN_PARAGRAPH.RIGHT] * 4,
-    )
-    add_body(
-        doc,
-        "Revenue increased 65.0% over the period, while gross profit increased 89.6%. Margin expanded in five of six year-over-year comparisons. Revenue growth slowed to about 6% in both 2023 and 2024, but profit still outpaced revenue, which is consistent with maturing rather than deteriorating growth.",
-    )
-
-    doc.add_page_break()
-    add_heading(doc, "2. Customer Segment Profitability", 1)
-    add_callout(doc, "Independent Retail is both the economic engine and the principal segment-level exposure.")
-    add_picture(
-        doc,
-        VISUALS / "02_segment_profitability.png",
+        VISUALS / "01_segment_profitability.png",
         "Horizontal bars compare revenue share and gross-profit share for the ten largest historical customer segments.",
     )
-    add_caption(doc, "Figure 2. Segment scale compared with profit contribution.")
+    add_caption(doc, "Figure 1. Segment revenue share compared with gross-profit share.")
     segment_rows = []
     for rank, row in enumerate(segments[:7], start=1):
         segment_rows.append(
@@ -558,18 +526,18 @@ def build_report():
     )
     add_body(
         doc,
-        "Independent Retail produced 48.75% of revenue and 51.37% of gross profit at a 22.39% margin. It also generated 43.04% of company revenue growth from 2018 to 2024. Wholesale Trade is more margin-light: 14.12% of revenue but 12.59% of gross profit at an 18.94% margin. Retail Cooperative Network is a credible expansion candidate because its 2024 revenue was 111.18% above 2018 while margin improved to 25.40%.",
+        "Independent Retail produced 48.75% of revenue and 51.37% of gross profit at a 22.39% margin. The company should protect this business while watching how much it depends on one segment. Wholesale Trade is also large, but its 18.94% margin is lower. Retail Cooperative Network is a reasonable place to test focused growth because its revenue more than doubled from 2018 to 2024 while its margin improved.",
     )
 
     doc.add_page_break()
-    add_heading(doc, "3. Revenue Concentration Risk", 1)
-    add_callout(doc, "Single-customer dependency is low; segment dependency is materially higher.")
+    add_heading(doc, "2. Revenue Concentration", 1)
+    add_callout(doc, "The company is not dependent on one large customer, but it does depend heavily on one customer segment.")
     add_picture(
         doc,
-        VISUALS / "03_customer_concentration.png",
+        VISUALS / "02_customer_concentration.png",
         "Cumulative revenue curve shows the share of recognized revenue produced by the ranked customer portfolio, with markers at 50, 80, and 90 percent.",
     )
-    add_caption(doc, "Figure 3. Customer-level cumulative revenue concentration.")
+    add_caption(doc, "Figure 2. Customer-level cumulative revenue concentration.")
     add_table(
         doc,
         ["Concentration measure", "Customer level", "Segment level"],
@@ -585,18 +553,18 @@ def build_report():
     )
     add_body(
         doc,
-        "The largest customer contributes only 1.13% of revenue, the top 10 contribute 7.09%, and the top 100 contribute 33.41%. It takes 599 customers, or 18.54% of the portfolio, to reach 80% of revenue. Leadership should therefore monitor correlated segment risks—pricing pressure, channel disruption, competitive shifts, or service failures—more closely than the loss of any single account.",
+        "The largest customer contributes only 1.13% of revenue, and it takes 599 customers to reach 80%. Losing one account would not put a large share of revenue at risk. A problem affecting many Independent Retail customers at the same time would matter much more, so the company should track concentration by segment as well as by customer.",
     )
 
     doc.add_page_break()
-    add_heading(doc, "4. Customer Lifecycle and Retention Risk", 1)
-    add_callout(doc, "The non-active portfolio carries a $23.0M trailing revenue baseline; 82.27% sits in dormant accounts.")
+    add_heading(doc, "3. Customer Lifecycle and Retention Risk", 1)
+    add_callout(doc, "Non-active customers have a $23.0M trailing revenue baseline, but the best outreach targets are the recently inactive high-value accounts.")
     add_picture(
         doc,
-        VISUALS / "04_retention_risk.png",
+        VISUALS / "03_retention_risk.png",
         "Stacked bars compare customer lifecycle counts with the distribution of trailing revenue baseline at risk across watch, at-risk, dormant, active, and no-positive-sales groups.",
     )
-    add_caption(doc, "Figure 4. Lifecycle mix and trailing revenue baseline at risk.")
+    add_caption(doc, "Figure 3. Lifecycle mix and trailing revenue baseline at risk.")
     retention_rows = []
     for row in retention:
         retention_rows.append(
@@ -617,25 +585,57 @@ def build_report():
     )
     add_body(
         doc,
-        "The first outreach wave should focus on high-value customers inactive for 7-12 months, where intervention is still timely. Watch customers should receive lower-cost proactive outreach, while dormant accounts should be handled as a controlled reactivation test. Inactivity is only a behavioral flag; seasonality, planned buying cycles, mergers, or historical class changes may explain the absence of recent sales.",
+        "The company should contact high-value customers inactive for 7-12 months first, then use lower-cost reminders for the 4-6 month watch group. Dormant customers should be handled as a smaller test focused on the most valuable accounts. Inactivity is a warning sign, not proof that a customer has permanently left.",
+    )
+
+    doc.add_page_break()
+    add_heading(doc, "4. Revenue and Margin Trends", 1)
+    add_callout(doc, "Revenue rose every year, gross profit grew faster, and gross margin improved.")
+    add_picture(
+        doc,
+        Q4_PNG,
+        "Stacked annual revenue bars show cost and gross profit from 2018 through 2024, with an accompanying gross-margin line rising from 19.15 percent to 22.01 percent.",
+    )
+    add_caption(doc, "Figure 4. Annual recognized revenue and gross-margin trend.")
+    annual_rows = []
+    for row in annual:
+        annual_rows.append(
+            [
+                row["per_year"],
+                f"${float(row['total_revenue']) / 1_000_000:.1f}M",
+                f"${float(row['gross_profit']) / 1_000_000:.1f}M",
+                f"{float(row['gross_margin_pct']):.2f}%",
+                "-" if not row["revenue_yoy_pct"] else f"{float(row['revenue_yoy_pct']):.2f}%",
+            ]
+        )
+    add_table(
+        doc,
+        ["Year", "Revenue", "Gross profit", "Margin", "Revenue YoY"],
+        annual_rows,
+        [900, 2200, 2200, 1800, 2260],
+        [WD_ALIGN_PARAGRAPH.CENTER] + [WD_ALIGN_PARAGRAPH.RIGHT] * 4,
+    )
+    add_body(
+        doc,
+        "Revenue increased 65.0% from 2018 to 2024, while gross profit increased 89.6%. Gross margin finished 2.86 percentage points higher. Growth slowed to about 6% in 2023 and 2024, but gross profit still grew faster than revenue. The historical pattern remains healthy through 2024, although it is not a forecast.",
     )
 
     doc.add_page_break()
     add_heading(doc, "Strategic Recommendations", 1)
     recommendations = [
         (
-            "1. Protect the core while diversifying the growth pipeline",
-            "Create an Independent Retail operating review covering revenue, margin, active customers, retention status, service, and company revenue share. In parallel, test repeatable acquisition plays in high-margin segments such as Retail Cooperative Network and Independent Distribution Partner.",
-            "Core-segment retention and margin; new revenue and gross profit from targeted expansion segments.",
+            "1. Protect Independent Retail while building other sources of growth",
+            "Review Independent Retail revenue, margin, active customers, retention, and service levels every month. At the same time, test focused growth efforts in smaller high-margin segments such as Retail Cooperative Network and Independent Distribution Partner.",
+            "Independent Retail retention and margin; new revenue and gross profit from the selected growth segments.",
         ),
         (
-            "2. Build a value-based retention queue",
-            "Run the lifecycle logic monthly. Prioritize the highest-baseline 7-12 month accounts for human outreach, use low-cost interventions for 4-6 month accounts, and test reactivation only on the most valuable dormant accounts.",
+            "2. Use a prioritized customer outreach list",
+            "Run the lifecycle analysis monthly. Contact high-value customers inactive for 7-12 months first, use lower-cost reminders for 4-6 month accounts, and test reactivation only on the most valuable dormant accounts.",
             "Watch-to-active and at-risk-to-active conversion, recovered gross profit, time to intervention, and campaign cost per reactivation.",
         ),
         (
-            "3. Improve margin in large, margin-light segments",
-            "Start with Wholesale Trade and other material segments whose gross-profit share trails their revenue share. Diagnose price realization, discounting, product mix, purchasing, freight recovery, and service intensity before setting blanket growth targets.",
+            "3. Improve margins in large segments that lag the company average",
+            "Start with Wholesale Trade and other large segments whose share of gross profit is lower than their share of revenue. Review pricing, discounts, product mix, purchasing, freight recovery, returns, and service requirements before setting new growth targets.",
             "Segment gross margin, gross profit per customer, realized price, freight recovery, returns, and cost-to-serve where available.",
         ),
     ]
@@ -648,11 +648,11 @@ def build_report():
         doc,
         ["Dimension", "Core metric", "Decision signal"],
         [
-            ["Growth", "Recognized revenue growth", "Growth slowing without margin support"],
-            ["Profitability", "Gross-profit growth and margin", "Revenue-heavy, profit-light segment"],
-            ["Concentration", "Largest-segment share", "Segment share rising faster than diversification"],
-            ["Retention", "Trailing revenue baseline at risk", "Watch and at-risk pool expanding"],
-            ["Seasonality", "Q4 revenue share", "Peak-quarter service or cash strain"],
+            ["Segments", "Revenue, gross profit, and margin", "A large segment contributes less profit than expected"],
+            ["Concentration", "Largest-segment and top-customer shares", "Segment dependence continues to rise"],
+            ["Retention", "Historical revenue tied to non-active customers", "Recent watch and at-risk groups are growing"],
+            ["Financial trend", "Revenue growth, GP growth, and margin", "Revenue slows while profit or margin also weakens"],
+            ["Seasonality", "Q4 revenue share", "The company is underprepared for busy months"],
         ],
         [2100, 3100, 4160],
     )
@@ -698,12 +698,12 @@ def build_report():
     )
     add_callout(
         doc,
-        "Conclusion: The company’s growth history is economically healthy. The highest-value next step is to manage revenue quality explicitly—protecting the profitable core, improving scale economics, and focusing retention effort on the accounts most worth recovering.",
+        "Conclusion: The company has grown while improving gross profit and margin. Its clearest next steps are to protect Independent Retail, improve weaker margins in other large segments, and focus retention work on recently valuable inactive customers.",
     )
 
     doc.save(REPORT_PATH)
     print(REPORT_PATH)
-    print(Q1_PNG)
+    print(Q4_PNG)
 
 
 if __name__ == "__main__":

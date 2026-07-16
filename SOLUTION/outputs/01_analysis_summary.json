@@ -4,44 +4,14 @@
     "last_period": "2412",
     "months": 84
   },
-  "revenue": {
-    "2018": 79379032.43,
-    "2024": 130976372.66,
-    "total_growth_pct": 65.00122091498261,
-    "cagr_pct": 8.704584311466679
-  },
-  "gross_profit": {
-    "2018": 15203835.9,
-    "2024": 28832515.17,
-    "total_growth_pct": 89.63974196801216,
-    "cagr_pct": 11.255517785544544
-  },
-  "cost": {
-    "2018": 64175196.53,
-    "2024": 102143857.49,
-    "total_growth_pct": 59.16407430439386,
-    "cagr_pct": 8.053998216613012
-  },
-  "margin": {
-    "2018_pct": 19.1535,
-    "2024_pct": 22.0135,
-    "change_pp": 2.8599999999999994,
-    "years_expanding": 5,
-    "years_compressing": 1
-  },
-  "growth_pattern": {
-    "highest_revenue_growth_year": 2021,
-    "highest_revenue_growth_pct": 16.65,
-    "2024_revenue_growth_pct": 6.05,
-    "2024_gross_profit_growth_pct": 7.28,
-    "negative_yoy_month_count": 12
-  },
-  "seasonality": {
-    "highest_month": "December",
-    "highest_average_revenue_share_pct": 11.7,
-    "lowest_month": "February",
-    "lowest_average_revenue_share_pct": 6.4,
-    "q4_average_revenue_share_pct": 31.43,
-    "q4_average_gross_profit_share_pct": 31.8
-  }
+  "active_segments": 64,
+  "top_segment": "Independent Retail Accounts",
+  "top_segment_revenue_share_pct": 48.7478,
+  "top_segment_gross_profit_share_pct": 51.3727,
+  "top_segment_margin_pct": 22.391,
+  "top_three_growth_contribution_pct": 63.58,
+  "best_material_margin_segment": "Independent Distribution Partner",
+  "best_material_margin_pct": 24.1535,
+  "weakest_material_margin_segment": "Niche Specialty Retailer",
+  "weakest_material_margin_pct": 14.8842
 }
