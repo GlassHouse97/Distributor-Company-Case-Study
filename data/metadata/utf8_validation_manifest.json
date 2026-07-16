@@ -5,7 +5,7 @@
   "line_count_mismatches": [],
   "files": [
     {
-      "path": "data/raw/reference/CustomerSegmentationData.csv",
+      "path": "data/reference/CustomerSegmentationData.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -18,7 +18,7 @@
       "sha256_after": "c28399b31f36cc5ab21443e79e771ebed47a97a6130285101941e09dfd10fa68"
     },
     {
-      "path": "data/raw/transactions/itmsls2018.csv",
+      "path": "data/transactions/itmsls2018.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -31,7 +31,7 @@
       "sha256_after": "97397e912294a356e61046fe92f5de983c6464ee1a0699d365fdb407818a6714"
     },
     {
-      "path": "data/raw/transactions/itmsls2019.csv",
+      "path": "data/transactions/itmsls2019.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -44,7 +44,7 @@
       "sha256_after": "1b9b6a0ee7998b7617604510102cbb8d53cfcebce911bd56a12b2f23d716aa51"
     },
     {
-      "path": "data/raw/transactions/itmsls2020.csv",
+      "path": "data/transactions/itmsls2020.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -57,7 +57,7 @@
       "sha256_after": "ded19cc4448e8f43d222c7b4f9cb7b422229f105ba6bfdf70b576167791e29ec"
     },
     {
-      "path": "data/raw/transactions/itmsls2021.csv",
+      "path": "data/transactions/itmsls2021.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -70,7 +70,7 @@
       "sha256_after": "a15b830a363baa5d548c28dc0109f4107d9a6132e5959bf82d8e956059e06958"
     },
     {
-      "path": "data/raw/transactions/itmsls2022.csv",
+      "path": "data/transactions/itmsls2022.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -83,7 +83,7 @@
       "sha256_after": "9241f9ce97138a1a1f0d5cf4f0805482f0d4c5dbee79d7cf9475db4100b23817"
     },
     {
-      "path": "data/raw/transactions/itmsls2023.csv",
+      "path": "data/transactions/itmsls2023.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,
@@ -96,7 +96,7 @@
       "sha256_after": "d14955279869dcb397e53cabe5c4a1c5b3d8630608f0fb8d3607e9f9012f4273"
     },
     {
-      "path": "data/raw/transactions/itmsls2024.csv",
+      "path": "data/transactions/itmsls2024.csv",
       "detected_source_encoding": "utf-8",
       "converted": false,
       "strict_utf8_after_run": true,

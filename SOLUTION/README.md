@@ -1,42 +1,40 @@
-# Solution
+# Complete Case Study Solution
 
-This folder contains the author's analysis for the four final case-study questions and the final strategic synthesis defined in [`CASE_STUDY_QUESTIONS.md`](../CASE_STUDY_QUESTIONS.md).
+Everything produced for the finished case study is collected in this folder: the executive summary, detailed question answers, downloadable report and workbook, SQL, result tables, and visuals.
 
-## Solution Structure
+## Start Here
 
-| File | Purpose | Status |
-| --- | --- | --- |
-| `EXECUTIVE_SUMMARY.md` | Concise hiring-manager narrative and recommendations | Complete |
-| `01_revenue_margin_trends.md` | Recognized revenue, gross profit, and margin trends | Complete |
-| `02_segment_profitability.md` | Customer-segment scale and profitability | Complete |
-| `03_revenue_concentration.md` | Customer- and segment-level concentration risk | Complete |
-| `04_customer_retention.md` | Inactivity, churn-risk categories, and revenue at risk | Complete |
-| `05_strategic_synthesis.md` | Integrated findings and recommendations | Complete |
-| `sql/` | Reproducible SQL queries | Questions 1–4 validated |
-| `visualizations/` | Final analytical charts | Questions 1–4 complete |
+- **Read:** [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md) presents the business story, findings, visuals, and recommendations in the browser.
+- **Download:** [`Distributor_Case_Study_Report.docx`](Distributor_Case_Study_Report.docx) is the polished business report.
+- **Explore:** [`Distributor_Case_Study_Analysis.xlsx`](Distributor_Case_Study_Analysis.xlsx) contains the filterable analyst workbook.
 
-The executive summary is the primary non-technical entry point. The question-level files provide supporting detail, while `sql/` provides the reproducible analyst path.
+## Detailed Answers
 
-## Standard for Each Analysis
+| Question | Analysis |
+| --- | --- |
+| 1. Revenue and margin trends | [`01_revenue_margin_trends.md`](01_revenue_margin_trends.md) |
+| 2. Segment profitability | [`02_segment_profitability.md`](02_segment_profitability.md) |
+| 3. Revenue concentration | [`03_revenue_concentration.md`](03_revenue_concentration.md) |
+| 4. Customer retention | [`04_customer_retention.md`](04_customer_retention.md) |
+| Final strategic synthesis | [`05_strategic_synthesis.md`](05_strategic_synthesis.md) |
 
-Each solution should contain:
+The approved project scope is in [`../CASE_STUDY_QUESTIONS.md`](../CASE_STUDY_QUESTIONS.md).
 
-1. The executive question.
-2. The analytical method and key assumptions.
-3. A link to the corresponding SQL query.
-4. The principal results and validation checks.
-5. A business interpretation written in plain language.
-6. A final visualization when it materially improves understanding.
+## Supporting Evidence
 
-The analysis documents should report findings without exposing confidential or identifying source data.
+- [`sql/`](sql/) contains every reproducible SQLite query.
+- [`outputs/`](outputs/) contains compact CSV result tables and validation checks.
+- [`visualizations/`](visualizations/) contains the final charts used by the written analysis.
 
-## Regenerate the Analysis
+## Regenerate the Solution
 
-After building the final SQLite database from the project root:
+After building the final SQLite database from the repository root:
 
 ```bash
 python scripts/analyze_q1.py
 python scripts/analyze_q2_q4.py
+python scripts/build_business_report.py
+node scripts/build_analysis_workbook.mjs
 ```
 
-The commands recreate the public result tables, validation evidence, summary metadata, and visualizations used in the written answers.
+These commands regenerate the analysis outputs, visuals, Word report, and Excel workbook in this folder.

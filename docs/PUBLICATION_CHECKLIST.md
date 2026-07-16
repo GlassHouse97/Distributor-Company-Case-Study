@@ -4,7 +4,7 @@ The analytical work, public dataset, and portfolio deliverables are complete. Us
 
 ## Data Package
 
-- [x] Include the seven scrubbed annual transaction CSVs in `data/raw/transactions/`.
+- [x] Include the seven scrubbed annual transaction CSVs in `data/transactions/`.
 - [x] Include the scrubbed `CustomerData.csv`, customer-class map, and schema reference.
 - [x] Document that financial values are scaled portfolio values rather than the source company's actual results.
 - [x] Verify every public transaction file against `data/metadata/source_manifest.json`.

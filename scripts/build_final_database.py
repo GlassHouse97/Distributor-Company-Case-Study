@@ -14,7 +14,7 @@ import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATABASE = PROJECT_ROOT / "data" / "processed" / "distributor_case_study.sqlite"
-REFERENCE_DIR = PROJECT_ROOT / "data" / "raw" / "reference"
+REFERENCE_DIR = PROJECT_ROOT / "data" / "reference"
 REPORT_PATH = PROJECT_ROOT / "data" / "metadata" / "final_ingestion_report.json"
 CHUNK_SIZE = 100_000
 
@@ -119,7 +119,7 @@ def default_transactions_dir() -> Path:
     configured = os.environ.get("DISTRO_TRANSACTIONS_DIR")
     if configured:
         return Path(configured).expanduser()
-    return PROJECT_ROOT / "data" / "raw" / "transactions"
+    return PROJECT_ROOT / "data" / "transactions"
 
 
 def load_reference_data() -> tuple[pd.DataFrame, pd.DataFrame, dict[str, str], set[str]]:

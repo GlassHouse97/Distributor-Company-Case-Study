@@ -1,60 +1,72 @@
 # Public Data
 
-This repository includes the complete scrubbed dataset required to reproduce the case study.
+## Download the Transaction CSVs
 
-## What Is Included
+The complete transaction dataset is in **[`transactions/`](transactions/)**. That folder contains the seven annual CSV files used by every analysis in this case study.
+
+| Year | File | Rows | Approximate Size |
+| --- | --- | ---: | ---: |
+| 2018 | [`itmsls2018.csv`](transactions/itmsls2018.csv) | 406,856 | 50 MB |
+| 2019 | [`itmsls2019.csv`](transactions/itmsls2019.csv) | 436,872 | 54 MB |
+| 2020 | [`itmsls2020.csv`](transactions/itmsls2020.csv) | 494,162 | 61 MB |
+| 2021 | [`itmsls2021.csv`](transactions/itmsls2021.csv) | 541,492 | 67 MB |
+| 2022 | [`itmsls2022.csv`](transactions/itmsls2022.csv) | 574,256 | 71 MB |
+| 2023 | [`itmsls2023.csv`](transactions/itmsls2023.csv) | 612,189 | 76 MB |
+| 2024 | [`itmsls2024.csv`](transactions/itmsls2024.csv) | 648,797 | 79 MB |
+
+On GitHub, select a CSV and use **Download raw file**. Analysts who want the complete project should clone the repository instead of downloading the files individually.
+
+## What the Data Represents
+
+The public data is a scrubbed analytical model of a real distributor dataset. Identifiers were anonymized and financial values were scaled to protect the source company while preserving the structure, relationships, trends, edge cases, and analytical usefulness of the data. The figures do not represent the source company's actual financial results.
+
+## Data Folder Guide
 
 ```text
 data/
-|-- raw/
-|   |-- transactions/     # Seven annual UTF-8 transaction CSVs, 2018-2024
-|   `-- reference/        # Scrubbed customer, customer-class, and schema references
-|-- processed/            # Locally generated SQLite database; not committed
-`-- metadata/             # Checksums, ingestion logs, and validation evidence
+|-- transactions/    # Seven public annual transaction CSVs
+|-- reference/       # Customer, customer-class, and field references
+|-- metadata/        # Checksums, ingestion records, and validation evidence
+|-- processed/       # Locally generated SQLite database; ignored by Git
+`-- README.md         # This download and analyst guide
 ```
 
-The public files contain anonymized identifiers and scaled financial values. They preserve the analytical structure, trends, relationships, edge cases, and multi-year behavior of the source data without publishing the source company's actual identifying or financial information.
+### Transaction data
 
-## Transaction Data
+[`transactions/`](transactions/) is the authoritative transaction source. Only the seven annual files are loaded. Quarterly extracts are excluded because they contain the same transactions and would double-count activity.
 
-[`raw/transactions/`](raw/transactions/) contains:
+### Reference data
 
-```text
-itmsls2018.csv
-itmsls2019.csv
-itmsls2020.csv
-itmsls2021.csv
-itmsls2022.csv
-itmsls2023.csv
-itmsls2024.csv
-```
+[`reference/`](reference/) contains:
 
-These seven files contain 3,714,624 rows and are the authoritative transaction inputs. Verify their sizes, UTF-8 encoding, and SHA-256 checksums with:
+- `CustomerData.csv`: scrubbed supplemental customer attributes.
+- `CustomerSegmentationData.csv`: the 67-row historical customer-class mapping.
+- `schema.xlsx`: source-field definitions.
+
+The transaction row's customer class remains the historical reporting authority. The customer reference never rewrites prior financial classifications.
+
+### Metadata
+
+[`metadata/`](metadata/) contains the published file checksums and the ingestion and validation evidence produced by the pipeline.
+
+## Reproduce the Dataset
+
+From the repository root:
 
 ```bash
+python -m venv .venv
+python -m pip install -r requirements.txt
 python scripts/verify_source_files.py
-```
-
-Do not add the quarterly extracts. They are derived partitions of the same annual rows and would double-count transactions if loaded with the annual files.
-
-## Reference Data
-
-[`raw/reference/`](raw/reference/) contains:
-
-- `CustomerSegmentationData.csv`: the 67-row historical customer-class mapping, including `37 = Legacy Customer`.
-- `CustomerData.csv`: a scrubbed supplemental customer reference used for current-state attributes such as geography and customer class.
-- `schema.xlsx`: the original source-field dictionary.
-
-Historical analysis always uses the customer class stored on each transaction. The current customer reference is supplemental and never rewrites historical financial classifications.
-
-## Generated Data
-
-`processed/distributor_case_study.sqlite` is built locally and intentionally excluded from Git because it can be recreated from the included public CSV files:
-
-```bash
 python scripts/prepare_reference_data.py
 python scripts/build_final_database.py
 python scripts/validate_final_database.py
 ```
 
-See [`../docs/DATA_PIPELINE.md`](../docs/DATA_PIPELINE.md) for the complete reproduction workflow and [`metadata/source_manifest.json`](metadata/source_manifest.json) for file-level verification evidence.
+The build creates `data/processed/distributor_case_study.sqlite`. Run your own SQL against its `total_sales` table or continue with the supplied analyses:
+
+```bash
+python scripts/analyze_q1.py
+python scripts/analyze_q2_q4.py
+```
+
+See the [complete data pipeline](../docs/DATA_PIPELINE.md) and [data dictionary](../docs/DATA_DICTIONARY.md) for field definitions and modeling rules.

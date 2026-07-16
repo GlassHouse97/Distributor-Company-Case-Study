@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-REFERENCE_DIR = PROJECT_ROOT / "data" / "raw" / "reference"
+REFERENCE_DIR = PROJECT_ROOT / "data" / "reference"
 SEGMENT_PATH = REFERENCE_DIR / "CustomerSegmentationData.csv"
 CUSTOMER_PATH = REFERENCE_DIR / "CustomerData.csv"
 REPORT_PATH = PROJECT_ROOT / "data" / "metadata" / "reference_data_change_log.json"

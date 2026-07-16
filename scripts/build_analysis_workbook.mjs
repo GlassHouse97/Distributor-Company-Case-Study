@@ -7,9 +7,9 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(SCRIPT_DIR, "..");
 const OUTPUTS = path.join(PROJECT_ROOT, "SOLUTION", "outputs");
-const DELIVERABLES = path.join(PROJECT_ROOT, "deliverables");
+const SOLUTION_DIR = path.join(PROJECT_ROOT, "SOLUTION");
 const PREVIEW_DIR = process.argv[2] || path.join(os.tmpdir(), "distro-workbook-previews");
-const OUTPUT_PATH = path.join(DELIVERABLES, "Distributor_Case_Study_Analysis.xlsx");
+const OUTPUT_PATH = path.join(SOLUTION_DIR, "Distributor_Case_Study_Analysis.xlsx");
 const BUNDLED_MODULES = process.env.CODEX_NODE_MODULES ||
   path.join(os.homedir(), ".cache", "codex-runtimes", "codex-primary-runtime", "dependencies", "node", "node_modules");
 
@@ -391,7 +391,7 @@ validation.getRange("B:B").format.columnWidth = 38;
 validation.getRange("E5:E100").format.font = { bold: true, color: GREEN };
 validation.freezePanes.freezeRows(4);
 
-await fs.mkdir(DELIVERABLES, { recursive: true });
+await fs.mkdir(SOLUTION_DIR, { recursive: true });
 await fs.mkdir(PREVIEW_DIR, { recursive: true });
 
 const previewSheets = [

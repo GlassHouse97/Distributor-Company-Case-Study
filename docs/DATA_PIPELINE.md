@@ -25,7 +25,7 @@ itmsls2023.csv
 itmsls2024.csv
 ```
 
-The pipeline reads `data/raw/transactions/` by default. A different location can be supplied with `--transactions-dir` or `DISTRO_TRANSACTIONS_DIR`.
+The pipeline reads `data/transactions/` by default. A different location can be supplied with `--transactions-dir` or `DISTRO_TRANSACTIONS_DIR`.
 
 The files are included in the repository. After cloning, verify their SHA-256 checksums:
 
@@ -35,8 +35,8 @@ python scripts/verify_source_files.py
 
 ### Reference inputs
 
-- `data/raw/reference/CustomerSegmentationData.csv` maps historical transaction class codes to descriptions.
-- `data/raw/reference/CustomerData.csv` contains scrubbed supplemental current customer attributes.
+- `data/reference/CustomerSegmentationData.csv` maps historical transaction class codes to descriptions.
+- `data/reference/CustomerData.csv` contains scrubbed supplemental current customer attributes.
 
 Historical transaction values remain authoritative. The customer reference is never used to rewrite a transaction's class.
 
@@ -78,7 +78,7 @@ Optional explicit paths:
 
 ```bash
 python scripts/build_final_database.py \
-  --transactions-dir data/raw/transactions \
+  --transactions-dir data/transactions \
   --database data/processed/distributor_case_study.sqlite
 ```
 

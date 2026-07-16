@@ -17,7 +17,7 @@ def default_transactions_dir() -> Path:
     configured = os.environ.get("DISTRO_TRANSACTIONS_DIR")
     if configured:
         return Path(configured).expanduser()
-    return PROJECT_ROOT / "data" / "raw" / "transactions"
+    return PROJECT_ROOT / "data" / "transactions"
 
 
 def sha256_file(path: Path) -> str:

@@ -18,12 +18,12 @@ Start with the browser-friendly [Executive Summary](SOLUTION/EXECUTIVE_SUMMARY.m
 
 Use the report for a polished business-facing presentation and the workbook for filterable supporting analysis.
 
-- [Download the editable Word report](deliverables/Distributor_Case_Study_Report.docx)
-- [Download the Excel analysis workbook](deliverables/Distributor_Case_Study_Analysis.xlsx)
+- [Download the editable Word report](SOLUTION/Distributor_Case_Study_Report.docx)
+- [Download the Excel analysis workbook](SOLUTION/Distributor_Case_Study_Analysis.xlsx)
 
 ### 3. Reproduce the analysis
 
-The complete public dataset is already included in [`data/raw/transactions/`](data/raw/transactions/). Clone the repository and run:
+The complete public dataset is already included in the clearly labeled [`data/transactions/`](data/transactions/) folder. Start with the [data download and analyst guide](data/README.md), or clone the repository and run:
 
 ```bash
 python -m venv .venv
@@ -94,16 +94,16 @@ flowchart LR
 |-- README.md                         # Start here
 |-- CASE_STUDY_QUESTIONS.md           # Final project scope
 |-- data/
-|   |-- raw/
-|   |   |-- transactions/             # Seven public annual CSV files
-|   |   `-- reference/                # Scrubbed customer and class references
+|   |-- transactions/                 # Seven downloadable annual CSV files
+|   |-- reference/                    # Scrubbed customer and class references
 |   |-- processed/                    # Locally generated SQLite database
 |   `-- metadata/                     # Checksums and validation evidence
-|-- deliverables/                     # Word and Excel downloads
 |-- docs/                              # Pipeline, dictionary, and release notes
 |-- scripts/                           # Ingestion, validation, and analysis code
 `-- SOLUTION/                          # Executive and question-level analysis
     |-- EXECUTIVE_SUMMARY.md
+    |-- Distributor_Case_Study_Report.docx
+    |-- Distributor_Case_Study_Analysis.xlsx
     |-- 01_revenue_margin_trends.md
     |-- 02_segment_profitability.md
     |-- 03_revenue_concentration.md
@@ -123,4 +123,4 @@ python scripts/build_business_report.py
 node scripts/build_analysis_workbook.mjs
 ```
 
-The finished files are written to [`deliverables/`](deliverables/). The Word and Excel files are convenience deliverables; the browser-readable Markdown analysis and all supporting SQL remain available directly in the repository.
+The finished files are written directly to [`SOLUTION/`](SOLUTION/), alongside the browser-readable analysis, supporting SQL, outputs, and visuals.

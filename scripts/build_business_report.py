@@ -18,8 +18,8 @@ from docx.shared import Inches, Pt, RGBColor
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 OUTPUTS = PROJECT_ROOT / "SOLUTION" / "outputs"
 VISUALS = PROJECT_ROOT / "SOLUTION" / "visualizations"
-DELIVERABLES = PROJECT_ROOT / "deliverables"
-REPORT_PATH = DELIVERABLES / "Distributor_Case_Study_Report.docx"
+SOLUTION_DIR = PROJECT_ROOT / "SOLUTION"
+REPORT_PATH = SOLUTION_DIR / "Distributor_Case_Study_Report.docx"
 Q1_PNG = VISUALS / "01_revenue_margin_trends.png"
 
 NAVY = "17365D"
@@ -418,7 +418,7 @@ def configure_document(doc: Document):
 
 
 def build_report():
-    DELIVERABLES.mkdir(exist_ok=True)
+    SOLUTION_DIR.mkdir(exist_ok=True)
     VISUALS.mkdir(exist_ok=True)
     make_q1_chart()
 

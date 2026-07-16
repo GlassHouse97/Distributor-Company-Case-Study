@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-REFERENCE_DIR = PROJECT_ROOT / "data" / "raw" / "reference"
+REFERENCE_DIR = PROJECT_ROOT / "data" / "reference"
 MANIFEST_PATH = PROJECT_ROOT / "data" / "metadata" / "source_manifest.json"
 
 
@@ -18,7 +18,7 @@ def default_transactions_dir() -> Path:
     configured = os.environ.get("DISTRO_TRANSACTIONS_DIR")
     if configured:
         return Path(configured).expanduser()
-    return PROJECT_ROOT / "data" / "raw" / "transactions"
+    return PROJECT_ROOT / "data" / "transactions"
 
 
 def sha256_file(path: Path) -> str:
@@ -75,7 +75,7 @@ def main() -> None:
     manifest = {
         "schema_version": "1.0",
         "distribution": "included_in_repository",
-        "transaction_directory": "data/raw/transactions",
+        "transaction_directory": "data/transactions",
         "data_license": "No separate data license selected",
         "annual_transaction_files": files,
         "public_reference_files": references,

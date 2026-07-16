@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "distribution": "included_in_repository",
-  "transaction_directory": "data/raw/transactions",
+  "transaction_directory": "data/transactions",
   "data_license": "No separate data license selected",
   "annual_transaction_files": [
     {
